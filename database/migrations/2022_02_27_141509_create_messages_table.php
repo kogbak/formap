@@ -15,7 +15,15 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->text('message', 1000);
+            $table->string('expediteur');
+            $table->timestamp('created_at');
+
+            $table->unsignedBigInteger('entreprise_id');
+            $table->foreign('entreprise_id')->references('id')->on('entreprises')->onDelete('cascade');
+
+            $table->unsignedBigInteger('formateur_id');
+            $table->foreign('formateur_id')->references('id')->on('formateurs')->onDelete('cascade');
         });
     }
 

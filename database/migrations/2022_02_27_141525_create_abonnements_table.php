@@ -15,7 +15,17 @@ return new class extends Migration
     {
         Schema::create('abonnements', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->float('prix');
+            $table->string('image');
+            $table->text('description');
+            $table->integer('tarif_mensuel');
+            $table->string('date_debut');
+            $table->string('date_fin');
+
+            $table->unsignedBigInteger('entreprise_id');
+            $table->foreign('entreprise_id')->references('id')->on('entreprises')->onDelete('cascade');
+        
+           
         });
     }
 

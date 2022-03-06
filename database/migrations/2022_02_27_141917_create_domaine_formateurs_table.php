@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('domaine_formateurs', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('domaine');
         });
     }
 

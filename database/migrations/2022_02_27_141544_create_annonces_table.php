@@ -15,7 +15,20 @@ return new class extends Migration
     {
         Schema::create('annonces', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('titre');
+            $table->string('description_courte');
+            $table->text('description_longue', 3000);
+            $table->string('ville');
+            $table->char('code_postal', 5);
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+            
+
+            $table->unsignedBigInteger('domaine_id');
+            $table->foreign('domaine_id')->references('id')->on('domaines')->onDelete('cascade');
+
+            $table->unsignedBigInteger('entreprise_id');
+            $table->foreign('entreprise_id')->references('id')->on('entreprises')->onDelete('cascade');
         });
     }
 
