@@ -10,7 +10,7 @@ class Domaine extends Model
     use HasFactory;
 
     public function annonces(){
-        return $this->belongsToMany(Annonce::class);
+        return $this->hasMany(Annonce::class);
     }
 
     public function formateurs(){

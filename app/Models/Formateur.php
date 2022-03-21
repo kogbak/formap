@@ -14,10 +14,10 @@ class Formateur extends Model
     }
 
     public function messages(){
-        return $this->belongsToMany(Message::class);
+        return $this->hasMany(Message::class);
     }
 
     public function domaines(){
-        return $this->hasMany(Domaine::class);
+        return $this->belongsToMany(Domaine::class);
     }
 }

@@ -23,6 +23,6 @@ class Entreprise extends Model
     }
 
     public function abonnement(){
-        return $this->belongsTo(Abonnement::class);
+        return $this->hasOne(Abonnement::class);
     }
 }

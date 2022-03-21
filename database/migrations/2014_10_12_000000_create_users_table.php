@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('telephone');
             $table->string('adresse');
-            $table->char('code_postal', 7);
+            $table->char('code_postal', 5);
             $table->string('ville');
             $table->rememberToken();
             $table->timestamps();

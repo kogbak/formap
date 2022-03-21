@@ -14,13 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('abonnements', function (Blueprint $table) {
-            $table->id();
-            $table->float('prix');
+            $table->id();  
             $table->string('image');
             $table->text('description');
-            $table->integer('tarif_mensuel');
-            $table->string('date_debut');
-            $table->string('date_fin');
+            $table->float('tarif_mensuel');
+            $table->float('tarif_annuel');
+            $table->date('date_debut');
+            $table->date('date_fin');
 
             $table->unsignedBigInteger('entreprise_id');
             $table->foreign('entreprise_id')->references('id')->on('entreprises')->onDelete('cascade');

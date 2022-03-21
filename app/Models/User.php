@@ -43,15 +43,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function entreprises(){
-        return $this->belongsTo(Entreprise::class);
+    public function entreprise(){
+        return $this->hasOne(Entreprise::class);
     }
 
-    public function formateurs(){
-        return $this->belongsTo(Formateur::class);
+    public function formateur(){
+        return $this->hasOne(Formateur::class);
     }
 
-    public function roles(){
+    public function role(){
         return $this->belongsTo(Role::class);
     }
 

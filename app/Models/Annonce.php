@@ -13,7 +13,7 @@ class Annonce extends Model
         return $this->belongsTo(Entreprise::class);
     }
 
-    public function domaines(){
+    public function domaine(){
         return $this->belongsTo(Domaine::class);
     }
 }

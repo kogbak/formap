@@ -15,13 +15,9 @@ return new class extends Migration
     {
         Schema::create('domaines', function (Blueprint $table) {
             
-
-            $table->unsignedBigInteger('domaine_id');
-            $table->foreign('domaine_id')->references('id')->on('domaines')->onDelete('cascade');
-            $table->unsignedBigInteger('formateur_id');
-            $table->foreign('formateur_id')->references('id')->on('formateurs')->onDelete('cascade');
-
-            $table->primary(['domaine_id', 'formateur_id']);
+            $table->id();
+            $table->string('domaine');
+            
         });
     }
 

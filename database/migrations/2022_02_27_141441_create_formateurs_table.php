@@ -17,15 +17,15 @@ return new class extends Migration
            
             $table->id();
             $table->text('description', 500);
-            $table->char('siret', 17);
+            $table->char('siret', 17)->nullable();
             $table->integer('age');
-            $table->integer('km'); // float ou integer
-            $table->string('diplome');
-            $table->string('experience');
-            $table->string('image');
+            $table->integer('km');
+            $table->string('diplomes');
+            $table->string('experiences');
+            $table->string('image')->nullable();
             $table->boolean('disponible');
-            $table->date('date_debut_dispo');
-            $table->date('date_fin_dispo');
+            $table->date('date_debut_dispo')->nullable();
+            $table->date('date_fin_dispo')->nullable();
             
             
             $table->unsignedBigInteger('user_id');
