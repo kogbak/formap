@@ -18,11 +18,10 @@ return new class extends Migration
             $table->char('siret', 17);
             $table->string('image')->nullable();
             $table->text('description', 500);
+            $table->timestamps();
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-        
-           
         });
     }
 

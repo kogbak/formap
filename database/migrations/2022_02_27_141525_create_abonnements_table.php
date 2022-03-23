@@ -21,6 +21,7 @@ return new class extends Migration
             $table->float('tarif_annuel');
             $table->date('date_debut');
             $table->date('date_fin');
+            $table->timestamps();
 
             $table->unsignedBigInteger('entreprise_id');
             $table->foreign('entreprise_id')->references('id')->on('entreprises')->onDelete('cascade');

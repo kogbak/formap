@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('message', 1000);
             $table->string('expediteur');
-            $table->timestamp('created_at');
+            $table->timestamps();
 
             $table->unsignedBigInteger('entreprise_id');
             $table->foreign('entreprise_id')->references('id')->on('entreprises')->onDelete('cascade');

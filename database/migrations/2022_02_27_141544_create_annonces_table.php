@@ -20,8 +20,7 @@ return new class extends Migration
             $table->text('description_longue', 3000);
             $table->string('ville');
             $table->char('code_postal', 5);
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamps();
             
 
             $table->unsignedBigInteger('domaine_id');

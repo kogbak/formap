@@ -19,13 +19,15 @@ return new class extends Migration
             $table->text('description', 500);
             $table->char('siret', 17)->nullable();
             $table->integer('age');
+            $table->string('sexe');
             $table->integer('km');
             $table->string('diplomes');
-            $table->string('experiences');
+            $table->integer('annees_experience');
             $table->string('image')->nullable();
             $table->boolean('disponible');
             $table->date('date_debut_dispo')->nullable();
             $table->date('date_fin_dispo')->nullable();
+            $table->timestamps();
             
             
             $table->unsignedBigInteger('user_id');
