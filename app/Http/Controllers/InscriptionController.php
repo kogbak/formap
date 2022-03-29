@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class EntrepriseController extends Controller
+class InscriptionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class EntrepriseController extends Controller
      */
     public function index()
     {
-        return view('inscription_entreprise');
+        return view('inscription');
     }
 
     /**

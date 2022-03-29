@@ -1,4 +1,161 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
+
+body {
+    
+    background-color: white!important;
+}
+
+
+a:link {
+    text-decoration: none;
+}
+
+.modif-input input{
+
+border: 1px solid #BDBDBD;
+border-radius: 5px;
+height: 45px;
+}
+
+
+.header-violet{
+
+    background-color: #6c6dda;
+    width: 100%;
+    height: 150px;
+    left: 0px;
+    right: 0px;
+
+}
+
+.header-violet h3{
+
+    color: white;
+
+}
+
+.bouton-connexion {
+    background-color: white;
+    padding: 7px;
+    border: 1px solid #6c6dda;
+    border-radius: 4px;
+    color: #6c6dda;
+}
+
+.bouton-connexion-2 {
+    background-color: #6c6dda;
+    padding: 7px 20px 7px 20px;
+    border: 1px solid #6c6dda;
+    border-radius: 4px;
+    color: white;
+}
+
+.bouton-connexion:hover {
+    color: #6c6dda;
+}
+
+.bouton-inscription {
+    background-color: #6c6dda;
+    border: 1px solid #6c6dda;
+    border-radius: 4px;
+    padding: 7px;
+    color: white;
+}
+
+.bouton-inscription-2 {
+    background-color: white;
+    border: 1px solid #6c6dda;
+    border-radius: 4px;
+    padding: 7px 20px 7px 20px;
+    color: #6c6dda;
+}
+
+.bouton-inscription:hover {
+    color: white;
+}
+
+.case-inscription {
+    background-color: white;
+    box-shadow: 0px 2px 7px rgb(187, 187, 187);
+    
+    height: 60px;
+    width: 45%;
+    border: 0px, solid;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: medium;
+    position: relative;
+    cursor: pointer;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 5rem;
+    color: #424242;
+    
+}
+
+.case-inscription:hover {
+    
+    box-shadow: 0px 2px 7px rgb(228, 228, 228);
+    color: #424242;
+    
+   
+}
+
+.case-inscription-v {
+   
+    background-color: #6c6dda;
+    height: 60px;
+    width: 2%;
+    border: 0px, solid;
+    border-radius: 5px 0px 0px 5px;
+    position: absolute;
+    left: 0px;
+}
+
+.bouton-suivant {
+    background-color: #6c6dda;
+    border: 0px solid #6c6dda;
+    border-radius: 4px;
+    padding: 7px 30px 7px 30px;
+    color: white;
+}
+
+.rond-etape {
+
+    border: 1px solid #c4c4c4;
+    border-radius: 20px;
+    width: 15px;
+    height: 15px;
+}
+
+.rond-etape-valid {
+
+    border: 1px solid #6c6dda;
+    border-radius: 20px;
+    background-color: #6c6dda;
+    width: 15px;
+    height: 15px;
+
+}
+
+.ajouter-photo a{
+    color: #6c6dda;
+}
+
+.ajouter-photo a:hover{
+    color: #b5b6ff;
+}
+
+.trait{
+
+    background-color:#c0c0c0 ;
+    border: 0px solid #c0c0c0;
+    width: 10rem;
+    height: 1px;
+    
+    
+}
+
 @charset "UTF-8";
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)

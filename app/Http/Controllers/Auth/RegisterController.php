@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password;
 
 class RegisterController extends Controller
 {
@@ -29,7 +30,11 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = 'inscription_formateur_etape_2';
+
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    
+    
 
     /**
      * Create a new controller instance.
@@ -41,6 +46,11 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function inscription_formateur_etape_2()
+    {
+        return view('inscription_formateur_etape_2');
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -50,9 +60,20 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'prenom' => ['required', 'string', 'max:50'],
+            'nom' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
+            'password' => ['required', Password::min(8)
+                ->letters()
+                ->mixedCase()
+                ->numbers()
+                ->symbols()],
+            'telephone' => ['required', 'string', 'max:14'],
+            'adresse' => ['required', 'string', 'max:120'],
+            'ville' => ['required', 'string', 'max:50'],
+            'code_postal' => ['required', 'string', 'max:5'],
+            'age' => ['integer'],
+
         ]);
     }
 
@@ -64,9 +85,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if ($data['age']) {
+
+            session()->put('age', $data['age']);
+        }
+
         return User::create([
-            'name' => $data['name'],
+            'prenom' => $data['prenom'],
+            'nom' => $data['nom'],
             'email' => $data['email'],
+            'telephone' => $data['telephone'],
+            'adresse' => $data['adresse'],
+            'ville' => $data['ville'],
+            'code_postal' => $data['code_postal'],
             'password' => Hash::make($data['password']),
         ]);
     }

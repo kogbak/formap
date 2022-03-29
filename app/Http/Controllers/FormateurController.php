@@ -13,7 +13,7 @@ class FormateurController extends Controller
      */
     public function index()
     {
-        //
+        return view('inscription_formateur');
     }
 
     /**

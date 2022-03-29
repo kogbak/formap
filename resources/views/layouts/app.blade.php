@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,14 +20,19 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body>
     <div id="app">
+
+
         <nav class="navbar navbar-expand-md navbar-light bg-white p-4">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="{{ asset('images/formap.png') }}" alt="logo" style="width: 10em;" class="mx-auto">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -40,31 +46,37 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
+
+
                             @if (Route::has('login'))
-                                <li class="nav-item " >
-                                    <a class="nav-link" style="background-color: white; height:40px; border: 1px solid #6c6dda; border-radius:5px; color:#6c6dda;" href="{{ route('login') }}">{{ __('Connexion') }}</a>
+                                <li class="nav-item ">
+                                    <a class="bouton-connexion"
+                                        
+                                        href="{{ route('login') }}">{{ __('Connexion') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item ms-4">
-                                    <a class="nav-link bouton-connexion" style="background-color: #6c6dda; height:40px; border: 1px solid #6c6dda; border-radius:5px; color:white;" href="{{ route('register') }}">{{ __('Inscription') }}</a>
+                                    <a class="bouton-inscription"
+                                        href="{{ route('inscription') }}">{{ __('Inscription') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
                                         @csrf
                                     </form>
                                 </div>
@@ -74,10 +86,27 @@
                 </div>
             </div>
         </nav>
+        <div class="container w-50 text-center p-3">
 
+            @if (session()->has('message'))
+                <p class="alert alert-success">{{ session()->get('message') }}</p>
+            @endif
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+        </div>
         <main class="py-4">
             @yield('content')
         </main>
     </div>
 </body>
+
 </html>
