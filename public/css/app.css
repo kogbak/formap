@@ -10,11 +10,31 @@ a:link {
     text-decoration: none;
 }
 
+.banniere{
+
+width: 100%;
+
+}
+
 .modif-input input{
 
 border: 1px solid #BDBDBD;
 border-radius: 5px;
 height: 45px;
+}
+
+textarea{
+
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+    
+}
+
+select{
+
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+    height: 45px;
 }
 
 
@@ -139,11 +159,11 @@ height: 45px;
 }
 
 .ajouter-photo a{
-    color: #6c6dda;
+    color: #3f3f3f;
 }
 
 .ajouter-photo a:hover{
-    color: #b5b6ff;
+    color: #b9b9b9;
 }
 
 .trait{
@@ -156,6 +176,25 @@ height: 45px;
     
 }
 
+.domaine_input{
+
+    border: 0px solid;
+    border-radius: 5px;
+    background-color: #e8e9ff;
+    padding: 10px;
+    color: #6c6dda;
+    margin-top: 10px;
+    
+   
+}
+
+.supprimer{
+
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+    color: #3f3f3f;
+}
 @charset "UTF-8";
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)

@@ -30,9 +30,9 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'inscription_formateur_etape_2';
+    
 
-    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::HOME;
     
     
 
@@ -49,6 +49,11 @@ class RegisterController extends Controller
     public function inscription_formateur_etape_2()
     {
         return view('inscription_formateur_etape_2');
+    }
+
+    public function inscription_entreprise_etape_2()
+    {
+        return view('inscription_entreprise_etape_2');
     }
 
     /**
@@ -85,9 +90,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if ($data['age']) {
+        if (isset($data['age'])) {
 
             session()->put('age', $data['age']);
+
+        }
+
+        if(isset($data['sexe'])){
+
+            session()->put('sexe', $data['sexe']);
         }
 
         return User::create([

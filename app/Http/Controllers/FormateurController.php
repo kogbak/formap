@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Formateur;
+
 
 class FormateurController extends Controller
 {
@@ -11,8 +14,10 @@ class FormateurController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
+        session()->put('choix_inscription','formateur' );
         return view('inscription_formateur');
     }
 
@@ -34,7 +39,24 @@ class FormateurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'domaine' => 'required',
+            'diplomes' => 'required',
+            'experiences' => 'required',
+            'annees_experience' => 'required',
+            'kms' => 'required|max:40',
+            'siret' => 'min:17|max:17',
+
+        ]);
+
+        
+        Formateur::create($request->all());
+
+        // if ($request['image']) {
+        //     $user->image = uploadImage($request);
+        // }
+
+        return redirect()->route('accueil')->with('message', 'Votre compte formateur a était créer avec succès');
     }
 
     /**

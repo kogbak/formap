@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('formateurs', function (Blueprint $table) {
            
             $table->id();
-            $table->text('description', 500);
             $table->char('siret', 17)->nullable();
             $table->integer('age');
             $table->string('sexe');
-            $table->integer('km');
+            $table->integer('kms');
             $table->string('diplomes');
+            $table->string('experiences');
             $table->integer('annees_experience');
             $table->string('image')->nullable();
             $table->boolean('disponible');

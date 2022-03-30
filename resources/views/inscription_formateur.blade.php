@@ -10,7 +10,7 @@
         <div class="container d-flex justify-content-center w-50">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
-                <div class="row">
+                <div class="row">                 
                     <div class="row mb-5">
                         <div class="col-12 ajouter-photo">
                             <img src="{{ asset('images/image_profil.png') }}" alt="logo" class="mx-auto">
@@ -47,8 +47,22 @@
                         </div>
                         <div class="row">
                             <label for="age">Age:</label><br>
-                            <input type="number" id="age" name="age" required maxlength="2">
+                            <input type="number" id="age" name="age" required maxlength="2" class="mb-5">
                             @error('age')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="row">
+                            <label for="sexe">Sexe:</label><br>
+                            <select name="sexe" id="sexe-select">
+                                
+                                <option value="femme">Femme</option>
+                                <option value="homme">Homme</option>
+                                <option value="transgenre">Transgenre</option>
+                            </select>
+                            @error('sexe')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

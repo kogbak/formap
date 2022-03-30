@@ -13,6 +13,7 @@ class EntrepriseController extends Controller
      */
     public function index()
     {
+        session()->put('choix_inscription','entreprise' );
         return view('inscription_entreprise');
     }
 

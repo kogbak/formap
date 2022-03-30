@@ -14,17 +14,20 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/accueil', [App\Http\Controllers\HomeController::class, 'index'])->name('accueil');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('accueil');
 
+//page inscription choix entre formateur et entreprise :
 Route::get('inscription', [App\Http\Controllers\InscriptionController::class, 'index'])->name('inscription');
+
+//Les pages resources
 Route::resource('/formateur', \App\Http\Controllers\FormateurController::class);
 Route::resource('/entreprise', \App\Http\Controllers\EntrepriseController::class);
 
-
+//pages inscription pour les etapes 2 :
 Route::get('inscription_formateur_etape_2', [App\Http\Controllers\Auth\RegisterController::class, 'inscription_formateur_etape_2'])->name('inscription_formateur_etape_2');
+Route::get('inscription_entreprise_etape_2', [App\Http\Controllers\Auth\RegisterController::class, 'inscription_entreprise_etape_2'])->name('inscription_entreprise_etape_2');
