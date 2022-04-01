@@ -24,9 +24,11 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ac
 //page inscription choix entre formateur et entreprise :
 Route::get('inscription', [App\Http\Controllers\InscriptionController::class, 'index'])->name('inscription');
 
+
 //Les pages resources
 Route::resource('/formateur', \App\Http\Controllers\FormateurController::class);
 Route::resource('/entreprise', \App\Http\Controllers\EntrepriseController::class);
+
 
 //pages inscription pour les etapes 2 :
 Route::get('inscription_formateur_etape_2', [App\Http\Controllers\Auth\RegisterController::class, 'inscription_formateur_etape_2'])->name('inscription_formateur_etape_2');

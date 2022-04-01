@@ -18,7 +18,7 @@ class FormateurSeeder extends Seeder
         Formateur::create([
             'user_id' => 5,
             'siret' => '854 254 789 00652',
-            'description' => 'Je suis formateur Soudeur, j\'ai déjà appris a de nouveau soudeur certaine base.',
+            'experiences' => 'Praesent molestie gravida nibh, nec vestibulum mauris efficitur nec. Pellentesque dapibus porttitor orci, non aliquet dui. Sed eu augue urna. Maecenas id lectus ut mauris laoreet malesuada. Quisque id eros porttitor, facilisis nisl in',
             'age' => '34',
             'sexe' => 'homme',
             'kms' => '120',
@@ -33,7 +33,7 @@ class FormateurSeeder extends Seeder
         Formateur::create([
             'user_id' => 6,
             'siret' => '842 956 325 00852',
-            'description' => 'Bonjour étant formateur Chaudronier, je souhaiterais faire apprendre de nouvel pratique au nouveau chaudronier.',
+            'experiences' => 'Praesent molestie gravida nibh, nec vestibulum mauris efficitur nec. Pellentesque dapibus porttitor orci, non aliquet dui. Sed eu augue urna. Maecenas id lectus ut mauris laoreet malesuada. Quisque id eros porttitor, facilisis nisl in',
             'age' => '56',
             'sexe' => 'homme',
             'kms' => '85',
@@ -48,7 +48,7 @@ class FormateurSeeder extends Seeder
         Formateur::create([
             'user_id' => 7,
             'siret' => '364 458 489 00265',
-            'description' => 'Je voudrais aider des gens dans la plomberie, n\'hésitez pas a me contacter.',
+            'experiences' => 'Praesent molestie gravida nibh, nec vestibulum mauris efficitur nec. Pellentesque dapibus porttitor orci, non aliquet dui. Sed eu augue urna. Maecenas id lectus ut mauris laoreet malesuada. Quisque id eros porttitor, facilisis nisl in',
             'age' => '46',
             'sexe' => 'homme',
             'kms' => '150',
@@ -63,7 +63,7 @@ class FormateurSeeder extends Seeder
         Formateur::create([
             'user_id' => 8,
             'siret' => '756 937 645 00128',
-            'description' => 'J\'aime apprendre l\'electricité a de nouvel personne.',
+            'experiences' => 'Praesent molestie gravida nibh, nec vestibulum mauris efficitur nec. Pellentesque dapibus porttitor orci, non aliquet dui. Sed eu augue urna. Maecenas id lectus ut mauris laoreet malesuada. Quisque id eros porttitor, facilisis nisl in',
             'age' => '34',
             'sexe' => 'homme',
             'kms' => '120',
@@ -78,7 +78,7 @@ class FormateurSeeder extends Seeder
         Formateur::create([
             'user_id' => 9,
             'siret' => '112 986 362 00651',
-            'description' => 'Je travaille le bois et j\'aime donner de mon temps pour former des gens',
+            'experiences' => 'Praesent molestie gravida nibh, nec vestibulum mauris efficitur nec. Pellentesque dapibus porttitor orci, non aliquet dui. Sed eu augue urna. Maecenas id lectus ut mauris laoreet malesuada. Quisque id eros porttitor, facilisis nisl in',
             'age' => '40',
             'sexe' => 'homme',
             'kms' => '160',
@@ -93,7 +93,7 @@ class FormateurSeeder extends Seeder
         Formateur::create([
             'user_id' => 10,
             'siret' => '348 341 329 00325',
-            'description' => 'Je suis une coiffeuse souriante et qui adore créer de nouveau look !',
+            'experiences' => 'Praesent molestie gravida nibh, nec vestibulum mauris efficitur nec. Pellentesque dapibus porttitor orci, non aliquet dui. Sed eu augue urna. Maecenas id lectus ut mauris laoreet malesuada. Quisque id eros porttitor, facilisis nisl in',
             'age' => '29',
             'sexe' => 'femme',
             'kms' => '60',
@@ -108,7 +108,7 @@ class FormateurSeeder extends Seeder
         Formateur::create([
             'user_id' => 11,
             'siret' => '496 936 996 00888',
-            'description' => 'Je décore les jardin comme je les penses, et je souhaite faire apprendre comme je le veux',
+            'experiences' => 'Praesent molestie gravida nibh, nec vestibulum mauris efficitur nec. Pellentesque dapibus porttitor orci, non aliquet dui. Sed eu augue urna. Maecenas id lectus ut mauris laoreet malesuada. Quisque id eros porttitor, facilisis nisl in',
             'age' => '58',
             'sexe' => 'femme',
             'kms' => '90',
@@ -123,7 +123,7 @@ class FormateurSeeder extends Seeder
         Formateur::create([
             'user_id' => 12,
             'siret' => '699 334 662 00754',
-            'description' => 'Depuis toute petite je cuisine et j\'ai fini par apprendre le metier, a mon tour d\'apprendre le metier aux autres',
+            'experiences' => 'Praesent molestie gravida nibh, nec vestibulum mauris efficitur nec. Pellentesque dapibus porttitor orci, non aliquet dui. Sed eu augue urna. Maecenas id lectus ut mauris laoreet malesuada. Quisque id eros porttitor, facilisis nisl in',
             'age' => '38',
             'sexe' => 'femme',
             'kms' => '190',

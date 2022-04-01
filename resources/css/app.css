@@ -194,3 +194,14 @@ select{
     cursor: pointer;
     color: #3f3f3f;
 }
+
+.explication_entreprise{
+
+width: 100%;
+padding: 15px;
+background-color: #fff3c6;
+border: 0px solid;
+border-radius: 10px;
+color: #f9a702;
+
+}

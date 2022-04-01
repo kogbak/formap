@@ -9,12 +9,12 @@
             <h3>Remplir mon profil Entreprise. Etape 2/2</h3>
         </div>
         <div class="container d-flex justify-content-center">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('entreprise.store') }}">
                 @csrf
                 <div class="row">
                     <div class="col-12 modif-input">
                         <div class="row w-50">
-                            <label class="d-flex" for="domaine">Nom de l'entreprise :</label><br>
+                            <label class="d-flex" for="domaine">Raison social :</label><br>
                             <input type="text" id="domaine" name="domaine" required maxlength="50" class="mb-5">
                             @error('domaine')
                                 <span class="invalid-feedback" role="alert">
@@ -55,6 +55,7 @@
                         </div>
                     </div>
                 </div>
+                
             </form>
         </div>
     </body>

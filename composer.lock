@@ -403,9 +403,9 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Egulias\\EmailValidator\\": "src"
-                }
+                "files": [
+                    "app/Helpers/UploadImage.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [

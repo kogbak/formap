@@ -43,7 +43,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        // $this->middleware('guest');
     }
 
     public function inscription_formateur_etape_2()
@@ -101,7 +101,8 @@ class RegisterController extends Controller
             session()->put('sexe', $data['sexe']);
         }
 
-        return User::create([
+        
+        $user = User::create([
             'prenom' => $data['prenom'],
             'nom' => $data['nom'],
             'email' => $data['email'],
@@ -111,5 +112,9 @@ class RegisterController extends Controller
             'code_postal' => $data['code_postal'],
             'password' => Hash::make($data['password']),
         ]);
+        
+        session()->put('user_id', $user->id);
+
+        return;
     }
 }

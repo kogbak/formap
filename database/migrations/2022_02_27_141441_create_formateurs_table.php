@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('sexe');
             $table->integer('kms');
             $table->string('diplomes');
-            $table->string('experiences');
+            $table->text('experiences');
             $table->integer('annees_experience');
             $table->string('image')->nullable();
             $table->boolean('disponible');

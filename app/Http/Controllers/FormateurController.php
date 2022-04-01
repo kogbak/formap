@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Formateur;
-
+use App\Models\Domaine;
 
 class FormateurController extends Controller
 {
@@ -17,7 +17,7 @@ class FormateurController extends Controller
 
     public function index()
     {
-        session()->put('choix_inscription','formateur' );
+        session()->put('choix_inscription', 'formateur');
         return view('inscription_formateur');
     }
 
@@ -39,6 +39,7 @@ class FormateurController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'domaine' => 'required',
             'diplomes' => 'required',
@@ -46,15 +47,41 @@ class FormateurController extends Controller
             'annees_experience' => 'required',
             'kms' => 'required|max:40',
             'siret' => 'min:17|max:17',
-
+            
         ]);
 
-        
-        Formateur::create($request->all());
+        $formateur = Formateur::create([
+            'user_id' => session()->get('user_id'),
+            'image' => session()->get('image'),
+            'domaine' => $request['domaine'],
+            'diplomes' => $request['diplomes'],
+            'experiences' => $request['experience'],
+            'annees_experience' => $request['annees_experience'],
+            'kms' => $request['kms'],
+            'siret' => $request['siret'],
+            
+        ]);
+
+        // sauvegarde de ses domaines dans table domaines_formateurs (attach)
+
+        $domainesChoisis = array_filter(explode('-', $request["domaines"])); // récupération domaines choisis
+
+        $domaines = Domaine::all(); // récupération de tous les domaines
+
+        // faire le lien entre un domaine dans $domainesChoisis et son id dans $domaines
+
+        foreach ($domaines as $domaine) {    // on boucle sur tous les domaines
+            
+            if (in_array($domaine->nom, $domainesChoisis)) {   // pour chaque domaine, si son nom a été choisi
+                $formateur->domaines->attach($domaine->id);  // je l'insère dans la table intermédiaire
+            }
+        }
+
 
         // if ($request['image']) {
         //     $user->image = uploadImage($request);
         // }
+
 
         return redirect()->route('accueil')->with('message', 'Votre compte formateur a était créer avec succès');
     }

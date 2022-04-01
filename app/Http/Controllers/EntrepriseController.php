@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Entreprise;
 use Illuminate\Http\Request;
+use App\Models\Formateur;
 
 class EntrepriseController extends Controller
 {
@@ -35,7 +37,22 @@ class EntrepriseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'siret' => 'required',
+            'nom' => 'required', 
+            'description' => 'required',
+            
+            
+        ]);
+
+        Entreprise::create([
+            'user_id' => session()->get('user_id'),
+            'image' => session()->get('image'),
+            'siret' => $request['siret'],
+            'nom' => $request['nom'],
+            'description' => $request['description'],
+            
+        ]);
     }
 
     /**

@@ -9,67 +9,83 @@
             <h3>Remplir mon profil formateur. Etape 2/2</h3>
         </div>
         <div class="container d-flex justify-content-center w-50">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('formateur.store') }}">
                 @csrf
                 <div class="row">
                     <div class="col-12 modif-input">
-
-
-
-
-
-
-
-
                         <div class="row w-50">
                             <label class="d-flex" for="domaine">Mon domaine de formateur : </label><br>
-                            <p style="font-size: small; color:#6c6dda;">(Séparer vos domaines par une virgule)</p>
-                            <input type="text" id="domaine" name="domaine" onkeyup="mot(this.value)" required maxlength="50"
-                                placeholder="Plombier, Chauffagiste">
+
+                            <select id="domaine" onchange="mot(this.value)">
+                                <option value="null" disabled="disabled" selected>Choisi un domaine</option>
+                                <option value="Charpentier">Charpentier</option>
+                                <option value="Boulanger">Boulanger</option>
+                                <option value="Kiné">Kiné</option>
+                            </select>
                             <div id="mot" class="mb-5"></div>
+
+                            <!-- input caché qui contient les domaines choisis -->
+                            <input id="domaines" type="hidden" name="domaines">
+
                             @error('domaine')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-                        
+
                         <script>
                             let array_mot = [];
 
-                           
-
                             function mot(text) {
-                                if (text.substr(-1) == ',') {
-                                    let html_tmp = '';
-                                    array_mot.push(text.slice(0, -1));
-                                    for (var i = 0; i < array_mot.length; i++) {
-                                        html_tmp += '<div class="domaine_input d-flex justify-content-between align-items-center" id="domaine_input_' + i + '"> ' + array_mot[i] + '<div onclick="mot_suppr(' + i +
-                                            ')" class="supprimer">x</div>' + '</div>';
-                                    }
-
-                                    document.getElementById("mot").innerHTML = html_tmp;
-                                    document.getElementById("domaine").value = null
+                                if (array_mot.length < 3 && array_mot.indexOf(text) == -1 && text != "null") {
+                                    array_mot.push(text);
+                                    document.getElementById("domaine").value = 'null';
+                                    mot_afficher();
+                                    ajouterDomaine(text);
                                 }
                             }
 
-                            function mot_suppr(id) {
-                                array_mot.splice(id, 1);
-                                let div_mot = document.getElementById("mot");
-                                let domaine_input = document.getElementById("domaine_input_" + id);
-                                div_mot.removeChild(domaine_input);
+                            function mot_suppr(index) {
+                                console.log(array_mot[index]);
+                                let nouvelleListeDomaines = document.getElementById('domaines').value.replace('-' + array_mot[index], '')
+                                console.log("nouvelle liste après suppression :" + nouvelleListeDomaines)
+                                document.getElementById('domaines').value = nouvelleListeDomaines
+                                console.log("input hidden après suppression : " +  nouvelleListeDomaines)
+                                array_mot.splice(index, 1);
+                                mot_afficher();
                             }
+
+                            function mot_afficher() {
+                                let html_tmp = '';
+                                for (var i = 0; i < array_mot.length; i++) {
+                                    html_tmp +=
+                                        '<div class="domaine_input d-flex justify-content-between align-items-center" id = "domaine_input_' +
+                                        i + '" > ' + array_mot[i] + ' <div onclick = "mot_suppr(' + i + ')" class="supprimer">x</div>' +
+                                        ' </div>';
+                                }
+                                document.getElementById("mot").innerHTML = html_tmp;
+                            }
+
+                            function ajouterDomaine(domaine) {
+                                let domaines = document.getElementById('domaines').value; // on récupère la valeur de l'input hidden
+                                document.getElementById('domaines').value = domaines + "-" + domaine; // on lui ajoute le nouveau domaine
+                                console.log("input hidden : " + document.getElementById('domaines').value)
+                            }
+
+                        
                         </script>
 
 
 
 
-
+                        <input type="hidden" value="{{ auth()->user()->id }}" name="user_id">
 
 
                         <div class="row w-50">
                             <label class="d-flex" for="domaine">Numero Siret :</label><br>
-                            <input type="text" id="siret" name="siret" required maxlength="50" class="mb-5">
+                            <input type="text" id="siret" name="siret" required maxlength="17" class="mb-5"
+                                placeholder="XXX XXX XXX XXXXX">
                             @error('siret')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -78,7 +94,8 @@
                         </div>
                         <div class="row">
                             <label for="diplome">Diplome(s):</label><br>
-                            <input type="text" id="diplome" name="diplome" required maxlength="30" class="mb-5">
+                            <input type="string" id="diplome" name="diplome" required maxlength="50" class="mb-5"
+                                placeholder="Cap soudeur, Bep chaudronier, Bac pro cuisinier ....">
                             @error('diplome')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -87,7 +104,8 @@
                         </div>
                         <div class="row">
                             <label for="experiences">Experience(s):</label><br>
-                            <textarea id="experiences" name="experiences" rows="8" cols="33" class="mb-5"></textarea>
+                            <textarea id="experiences" name="experiences" rows="8" cols="33" class="mb-5"
+                                placeholder="5 ans d'expérience dans la soudure"></textarea>
                             @error('experiences')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -95,7 +113,8 @@
                             @enderror
                             <div class="row">
                                 <label for="kms">Combien de Kms (allers simple) êtes vous prêt à faire:</label><br>
-                                <input class=" w-50 mb-5" type="number" id="kms" name="kms" required maxlength="3">
+                                <input class=" w-50 mb-5" type="number" id="kms" name="kms" required maxlength="3"
+                                    placeholder="120">
                                 @error('kms')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
