@@ -25,4 +25,15 @@ class Entreprise extends Model
     public function abonnement(){
         return $this->hasOne(Abonnement::class);
     }
+
+
+    protected $fillable = [
+        'user_id',
+        'siret',
+        'nom',
+        'image',
+        'description',
+        
+
+    ];
 }

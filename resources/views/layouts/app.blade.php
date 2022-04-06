@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <script src="https://kit.fontawesome.com/737c5f819d.js" crossorigin="anonymous"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
@@ -30,6 +31,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ asset('images/formap.png') }}" alt="logo" style="width: 10em;" class="mx-auto">
                 </a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -37,10 +39,6 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -50,9 +48,7 @@
 
                             @if (Route::has('login'))
                                 <li class="nav-item ">
-                                    <a class="bouton-connexion"
-                                        
-                                        href="{{ route('login') }}">{{ __('Connexion') }}</a>
+                                    <a class="bouton-connexion" href="{{ route('login') }}">{{ __('Connexion') }}</a>
                                 </li>
                             @endif
 
@@ -63,56 +59,82 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li class="nav-item">
+                                <a href="{{ route('inscription') }}">{{ __('Accueil') }}</a>
+                            </li>
+
+                            <li class="nav-item ms-3">
+                                <a href="{{ route('inscription') }}">{{ __('Liste formateur') }}</a>
+                            </li>
+
+                            {{-- SI FORMATEUR JE VAIS DANS LE PROFIL FORMATEUR SINON JE VAIS DANS PROFIL ENTREPRISE --}}
+
+                            @if (Auth::user()->formateur)
+                                <li class="nav-item ms-3">
+                                    <a
+                                        href="{{ route('formateur.show', Auth::user()->formateur) }}">{{ __('Profil') }}</a>
+                                </li>
+                            @else
+                                <li class="nav-item ms-3">
+                                    <a
+                                        href="{{ route('entreprise.show', Auth::user()->entreprise) }}">{{ __('Profil') }}</a>
+                                </li>
+                            @endif
+
+
+
+
+
+
+                            <li class="nav-item ms-3">
+                                <a id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" style="color:black" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Déconnexion') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    class="d-none">
+                                    @csrf
+                                </form>
+                            @endguest
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        
 
 
 
-            @if (session()->has('message'))
-                <p class="alert alert-success">{{ session()->get('message') }}</p>
-            @endif
 
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+        @if (session()->has('message'))
+            <p class="alert alert-success">{{ session()->get('message') }}</p>
+        @endif
 
-        
-        <main class="py-4">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+
+        <main>
             @yield('content')
         </main>
     </div>
 
 
-    
+
 </body>
 
 </html>

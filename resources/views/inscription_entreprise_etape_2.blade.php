@@ -14,9 +14,9 @@
                 <div class="row">
                     <div class="col-12 modif-input">
                         <div class="row w-50">
-                            <label class="d-flex" for="domaine">Raison social :</label><br>
-                            <input type="text" id="domaine" name="domaine" required maxlength="50" class="mb-5">
-                            @error('domaine')
+                            <label class="d-flex" for="nom">Raison social :</label><br>
+                            <input type="text" id="nom" name="nom" required maxlength="50" class="mb-5">
+                            @error('nom')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

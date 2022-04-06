@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Annonce;
 
 class AnnonceController extends Controller
 {
@@ -13,7 +14,8 @@ class AnnonceController extends Controller
      */
     public function index()
     {
-        //
+
+        
     }
 
     /**

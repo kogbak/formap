@@ -20,4 +20,22 @@ class Formateur extends Model
     public function domaines(){
         return $this->belongsToMany(Domaine::class);
     }
+
+    protected $fillable = [
+        'user_id',
+        'siret',
+        'age',
+        'sexe',
+        'kms',
+        'diplomes',
+        'experiences',
+        'annees_experience',
+        'image',
+        'disponible',
+        'date_debut_dispo',
+        'date_fin_dispo',
+
+    ];
 }
+
+

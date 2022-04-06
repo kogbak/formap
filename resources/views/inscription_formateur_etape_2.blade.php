@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-12 modif-input">
                         <div class="row w-50">
-                            <label class="d-flex" for="domaine">Mon domaine de formateur : </label><br>
+                            <label class="d-flex" for="domaines">Mon domaine de formateur : </label><br>
 
                             <select id="domaine" onchange="mot(this.value)">
                                 <option value="null" disabled="disabled" selected>Choisi un domaine</option>
@@ -27,7 +27,7 @@
                             <!-- input caché qui contient les domaines choisis -->
                             <input id="domaines" type="hidden" name="domaines">
 
-                            @error('domaine')
+                            @error('domaines')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -51,7 +51,7 @@
                                 let nouvelleListeDomaines = document.getElementById('domaines').value.replace('-' + array_mot[index], '')
                                 console.log("nouvelle liste après suppression :" + nouvelleListeDomaines)
                                 document.getElementById('domaines').value = nouvelleListeDomaines
-                                console.log("input hidden après suppression : " +  nouvelleListeDomaines)
+                                console.log("input hidden après suppression : " + nouvelleListeDomaines)
                                 array_mot.splice(index, 1);
                                 mot_afficher();
                             }
@@ -72,14 +72,12 @@
                                 document.getElementById('domaines').value = domaines + "-" + domaine; // on lui ajoute le nouveau domaine
                                 console.log("input hidden : " + document.getElementById('domaines').value)
                             }
-
-                        
                         </script>
 
 
 
 
-                        <input type="hidden" value="{{ auth()->user()->id }}" name="user_id">
+
 
 
                         <div class="row w-50">
@@ -93,10 +91,10 @@
                             @enderror
                         </div>
                         <div class="row">
-                            <label for="diplome">Diplome(s):</label><br>
-                            <input type="string" id="diplome" name="diplome" required maxlength="50" class="mb-5"
-                                placeholder="Cap soudeur, Bep chaudronier, Bac pro cuisinier ....">
-                            @error('diplome')
+                            <label for="diplomes">Diplome(s):</label><br>
+                            <input type="string" id="diplomes" name="diplomes" required maxlength="50"
+                                class="mb-5" placeholder="Cap soudeur, Bep chaudronier, Bac pro cuisinier ....">
+                            @error('diplomes')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -111,33 +109,46 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            <div class="row">
-                                <label for="kms">Combien de Kms (allers simple) êtes vous prêt à faire:</label><br>
-                                <input class=" w-50 mb-5" type="number" id="kms" name="kms" required maxlength="3"
-                                    placeholder="120">
-                                @error('kms')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+
+                        </div>
+                        <div class="row">
+                            <label for="annees_experience">Années d'experience:</label><br>
+                            <input type="number" id="annees_experience" name="annees_experience" required maxlength="2"
+                                class="mb-5 w-50" placeholder="0">
+                            @error('annees_experience')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
+                        <div class="row">
+                            <label for="kms">Combien de Kms (allers simple) êtes vous prêt à faire:</label><br>
+                            <input class=" w-50 mb-5" type="number" id="kms" name="kms" required maxlength="3"
+                                placeholder="120">
+                            @error('kms')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-12 d-flex flex-row justify-content-center">
-                            <div class="rond-etape-valid me-2"></div>
-                            <div class="rond-etape-valid"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 text-end">
-                            <input type="submit" value="Valider" class="bouton-suivant">
-                        </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 d-flex flex-row justify-content-center">
+                        <div class="rond-etape-valid me-2"></div>
+                        <div class="rond-etape-valid"></div>
                     </div>
                 </div>
-            </form>
+                <div class="row">
+                    <div class="col-12 text-end">
+                        <input type="submit" value="Valider" class="bouton-suivant">
+                    </div>
+                </div>
+        </div>
+        </form>
         </div>
     </body>
 

@@ -9,6 +9,16 @@ a:link {
     text-decoration: none;
 }
 
+li a{
+
+    color: #8c8c8c;
+}
+
+li a:hover{
+
+    color: #6c6dda;
+}
+
 .banniere{
 
 width: 100%;
@@ -34,6 +44,7 @@ select{
     border: 1px solid #BDBDBD;
     border-radius: 5px;
     height: 45px;
+    padding: 0px 20px 0px 20px;
 }
 
 
@@ -205,3 +216,73 @@ border-radius: 10px;
 color: #f9a702;
 
 }
+
+.cadre_recherche_annonce{
+
+
+background-color: white;
+border: 0px solid;
+border-radius: 10px;
+box-shadow: 0px 2px 7px rgb(187, 187, 187);
+height: 130px;
+position: relative;
+
+}
+
+.cadre_recherche_annonce-v {
+   
+    background-color: #6c6dda;
+    height: 10px;
+    border: 0px, solid;
+    border-radius: 0px 0px 10px 10px; 
+    position: absolute;
+    bottom: 0px; 
+    width: 100%;
+   
+}
+
+.bouton_recherche {
+    background-color: #6c6dda;
+    border: 0px solid #6c6dda;
+    border-radius: 4px;
+    padding: 7px 25px 7px 25px;
+    color: white;
+}
+
+.barre_violet_annonce{
+
+
+height: 100%;
+border-left: 5px solid #6c6dda;
+
+}
+
+/* annonce  */
+
+.description_courte{
+    color: rgb(124, 124, 124)
+
+    }
+
+.titre_annonce{
+
+    color: #3f3f3f;
+    font-weight: bold;
+    font-size: large;
+}
+
+.ville_code{
+
+    color: #adadad;
+    font-size: large;
+}
+
+.cadre_annonce, 
+.titre_annonce:hover {
+
+    color: #6c6dda;
+    cursor: pointer;
+    transition: 0.3s;
+   
+}
+

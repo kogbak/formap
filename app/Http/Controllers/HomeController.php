@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Annonce;
 
 class HomeController extends Controller
 {
@@ -14,6 +15,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('accueil');
+        
+        $annonces =  Annonce::with('domaine', 'entreprise')->get();
+        
+        return view('accueil', compact('annonces'));
     }
 }

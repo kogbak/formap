@@ -24,7 +24,7 @@ return new class extends Migration
             $table->text('experiences');
             $table->integer('annees_experience');
             $table->string('image')->nullable();
-            $table->boolean('disponible');
+            $table->boolean('disponible')->default(true);
             $table->date('date_debut_dispo')->nullable();
             $table->date('date_fin_dispo')->nullable();
             $table->timestamps();

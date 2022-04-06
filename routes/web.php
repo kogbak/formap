@@ -28,6 +28,7 @@ Route::get('inscription', [App\Http\Controllers\InscriptionController::class, 'i
 //Les pages resources
 Route::resource('/formateur', \App\Http\Controllers\FormateurController::class);
 Route::resource('/entreprise', \App\Http\Controllers\EntrepriseController::class);
+Route::resource('/annonce', \App\Http\Controllers\AnnonceController::class);
 
 
 //pages inscription pour les etapes 2 :

@@ -41,7 +41,7 @@ class FormateurController extends Controller
     {
 
         $request->validate([
-            'domaine' => 'required',
+            'domaines' => 'required',
             'diplomes' => 'required',
             'experiences' => 'required',
             'annees_experience' => 'required',
@@ -53,9 +53,10 @@ class FormateurController extends Controller
         $formateur = Formateur::create([
             'user_id' => session()->get('user_id'),
             'image' => session()->get('image'),
-            'domaine' => $request['domaine'],
+            'age' => session()->get('age'),
+            'sexe' => session()->get('sexe'),
             'diplomes' => $request['diplomes'],
-            'experiences' => $request['experience'],
+            'experiences' => $request['experiences'],
             'annees_experience' => $request['annees_experience'],
             'kms' => $request['kms'],
             'siret' => $request['siret'],
@@ -77,13 +78,7 @@ class FormateurController extends Controller
             }
         }
 
-
-        // if ($request['image']) {
-        //     $user->image = uploadImage($request);
-        // }
-
-
-        return redirect()->route('accueil')->with('message', 'Votre compte formateur a était créer avec succès');
+        return redirect()->route('login')->with('message', 'Votre compte formateur a était créer avec succès');
     }
 
     /**
@@ -94,7 +89,7 @@ class FormateurController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('profil_formateur');
     }
 
     /**
