@@ -83,8 +83,8 @@ class UserController extends Controller
         $user = Auth::user();
         $user->update($request->except('_token'));
 
-        
-        if (session($user->entreprise)) {
+
+        if (Auth::user()->entreprise) {
 
             return redirect()->route('entreprise.edit', $user->entreprise)->with('message', 'Le compte a bien été modifié 🙂');
         } else {
@@ -105,17 +105,21 @@ class UserController extends Controller
     {
         // récupérer formateur ou entreprise associer au user
         // et apres delete user je dois delete formateur ou entreprise associé
-
-        $formateur = Formateur::with('user')->get();
-        $entreprise = Entreprise::with('user')->get();
         $user = Auth::user();
 
-        if (formateur) {
-            $user->formateur->delete();
-        }else{
-            $user->entreprise->delete();
+
+        if ($user->formateur) {
+
+            $formateur = Formateur::where('user_id', $user->id)->get();
+            $formateur = $formateur[0];
+            $formateur->delete();
+        } else {
+            $entreprise = Entreprise::where('user_id', $user->id)->get();
+            $entreprise = $entreprise[0];
+            $entreprise->delete();
         }
 
+        $user->delete();
         return redirect()->route('accueil')->with('message', 'Nous somme navrés de vous voir partir 🙁');
     }
 }

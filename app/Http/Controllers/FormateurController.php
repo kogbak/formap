@@ -16,7 +16,7 @@ class FormateurController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function listeFormateurs()
- {
+    {
         $formateurs = Formateur::with('user')->get();
         return view('liste_formateurs', compact('formateurs'));
     }
@@ -136,18 +136,28 @@ class FormateurController extends Controller
 
     public function update_dispo(Formateur $formateur, Request $request)
     {
-        $request->validate([
-            'disponible' => 'required',
-            'date_debut_dispo'=> 'required',
-            'date_fin_dispo'=> 'required',
-            'kms' => 'required',
 
+        $user = Auth::user();
+        $formateur = Formateur::where('user_id', $user->id)->get();
+        $formateur = $formateur[0];
+
+        $request->validate([
+
+            'disponible' => 'required',
+            'date_debut_dispo' => 'required',
+            'date_fin_dispo' => 'required',
+            'kms' => 'required',
+        ]);
+       
+
+        $formateur->update([
+            'disponible' => intval($request->input('disponible')),
+            'date_debut_dispo' => $request->input('date_debut_dispo'),
+            'date_fin_dispo' => $request->input('date_fin_dispo'),
+            'kms' => intval($request->input('kms'))
         ]);
 
-
-        $formateur->update($request->except('_token'));
-
-        return redirect()->route('formateur.edit', compact('formateur'))->with('message', 'Le compte a bien été modifié 🙂');
+        return redirect()->route('formateur.show', compact('formateur'))->with('message', 'Le compte a bien été modifié 🙂');
     }
 
 
@@ -160,7 +170,7 @@ class FormateurController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-        {
+    {
         //
     }
 }

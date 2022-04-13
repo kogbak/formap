@@ -361,6 +361,54 @@ border-left: 5px solid #6c6dda;
     content: "+";   
 }
 
+.domaine{
+
+background-color: #6c6dda;
+border: 0px solid;
+border-radius: 5px;
+padding: 3px;
+color: white;
+
+}
+
+.cards{
+
+    border: 0px solid;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgb(223, 223, 223);
+
+}
+
+
+.nom_prenom_age{
+
+    font-weight: bold;
+    color: #3f3f3f;
+}
+
+.code_ville{
+
+    font-weight:lighter;
+    color: #a1a1a1;
+}
+
+.rond_disponible{
+
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+    background: rgb(115, 203, 115);
+    margin: 0px;
+}
+
+.rond_pas_disponible{
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+    background: rgb(213, 81, 81);
+    margin: 0px;
+
+}
 
 
 @charset "UTF-8";
