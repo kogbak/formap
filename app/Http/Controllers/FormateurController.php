@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Formateur;
 use App\Models\Domaine;
+use Auth;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class FormateurController extends Controller
 {
@@ -14,6 +15,12 @@ class FormateurController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function listeFormateurs()
+ {
+        $formateurs = Formateur::with('user')->get();
+        return view('liste_formateurs', compact('formateurs'));
+    }
+
 
     public function index()
     {
@@ -47,7 +54,7 @@ class FormateurController extends Controller
             'annees_experience' => 'required',
             'kms' => 'required|max:40',
             'siret' => 'min:17|max:17',
-            
+
         ]);
 
         $formateur = Formateur::create([
@@ -60,7 +67,7 @@ class FormateurController extends Controller
             'annees_experience' => $request['annees_experience'],
             'kms' => $request['kms'],
             'siret' => $request['siret'],
-            
+
         ]);
 
         // sauvegarde de ses domaines dans table domaines_formateurs (attach)
@@ -72,7 +79,7 @@ class FormateurController extends Controller
         // faire le lien entre un domaine dans $domainesChoisis et son id dans $domaines
 
         foreach ($domaines as $domaine) {    // on boucle sur tous les domaines
-            
+
             if (in_array($domaine->nom, $domainesChoisis)) {   // pour chaque domaine, si son nom a été choisi
                 $formateur->domaines->attach($domaine->id);  // je l'insère dans la table intermédiaire
             }
@@ -81,15 +88,14 @@ class FormateurController extends Controller
         return redirect()->route('login')->with('message', 'Votre compte formateur a était créer avec succès');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        return view('profil_formateur');
+
+        $user = Auth::user();
+        $user->load('formateur');
+        return view('profil_formateur', compact('user'));
+
     }
 
     /**
@@ -98,9 +104,11 @@ class FormateurController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $user = Auth::user();
+        $user->load('formateur');
+        return view('modif_formateur', compact('user'));
     }
 
     /**
@@ -110,10 +118,40 @@ class FormateurController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Formateur $formateur, Request $request)
     {
-        //
+        $request->validate([
+            'diplomes' => 'required',
+            'experiences' => 'required',
+            'annees_experience' => 'required',
+
+        ]);
+
+
+        $formateur->update($request->except('_token'));
+
+        return redirect()->route('formateur.edit', compact('formateur'))->with('message', 'Le compte a bien été modifié 🙂');
     }
+
+
+    public function update_dispo(Formateur $formateur, Request $request)
+    {
+        $request->validate([
+            'disponible' => 'required',
+            'date_debut_dispo'=> 'required',
+            'date_fin_dispo'=> 'required',
+            'kms' => 'required',
+
+        ]);
+
+
+        $formateur->update($request->except('_token'));
+
+        return redirect()->route('formateur.edit', compact('formateur'))->with('message', 'Le compte a bien été modifié 🙂');
+    }
+
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -122,7 +160,7 @@ class FormateurController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+        {
         //
     }
 }

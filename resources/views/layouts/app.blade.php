@@ -64,7 +64,7 @@
                             </li>
 
                             <li class="nav-item ms-3">
-                                <a href="{{ route('inscription') }}">{{ __('Liste formateur') }}</a>
+                                <a href="{{ route('liste_formateurs') }}">{{ __('Liste formateur') }}</a>
                             </li>
 
                             {{-- SI FORMATEUR JE VAIS DANS LE PROFIL FORMATEUR SINON JE VAIS DANS PROFIL ENTREPRISE --}}
@@ -110,13 +110,6 @@
         </nav>
 
 
-
-
-
-        @if (session()->has('message'))
-            <p class="alert alert-success">{{ session()->get('message') }}</p>
-        @endif
-
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -126,14 +119,13 @@
                 </ul>
             </div>
         @endif
-
-
         <main>
             @yield('content')
+            
         </main>
     </div>
 
-
+    
 
 </body>
 

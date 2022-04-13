@@ -22,14 +22,23 @@ Route::get('/accueil', [App\Http\Controllers\HomeController::class, 'index'])->n
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('accueil');
 
 //page inscription choix entre formateur et entreprise :
-Route::get('inscription', [App\Http\Controllers\InscriptionController::class, 'index'])->name('inscription');
+Route::get('inscription', [App\Http\Controllers\HomeController::class, 'inscription'])->name('inscription');
 
+//Liste des formateurs :
+Route::get('liste_formateurs', [App\Http\Controllers\FormateurController::class, 'listeFormateurs'])->name('liste_formateurs');
 
 //Les pages resources
 Route::resource('/formateur', \App\Http\Controllers\FormateurController::class);
 Route::resource('/entreprise', \App\Http\Controllers\EntrepriseController::class);
 Route::resource('/annonce', \App\Http\Controllers\AnnonceController::class);
 
+// user
+Route::put('modif_user', [App\Http\Controllers\UserController::class, 'update'])->name('modif_user');
+Route::delete('supprimer_user', [App\Http\Controllers\UserController::class, 'destroy'])->name('supprimer_user');
+
+//update disponibilité
+
+Route::put('update_dispo', [App\Http\Controllers\FormateurController::class, 'update_dispo'])->name('update_dispo');
 
 //pages inscription pour les etapes 2 :
 Route::get('inscription_formateur_etape_2', [App\Http\Controllers\Auth\RegisterController::class, 'inscription_formateur_etape_2'])->name('inscription_formateur_etape_2');

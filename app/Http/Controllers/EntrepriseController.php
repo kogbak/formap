@@ -6,6 +6,7 @@ use App\Models\Entreprise;
 use Illuminate\Http\Request;
 use App\Models\Formateur;
 use App\Models\User;
+use Auth;
 
 class EntrepriseController extends Controller
 {
@@ -66,8 +67,9 @@ class EntrepriseController extends Controller
      */
     public function show($id)
     {
-
-        $user =  User::with('entreprise')->get();      
+        $user = Auth::user();     
+        // $user =  User::with('entreprise')->get();    
+        $user->load('entreprise');  
         return view('profil_entreprise', compact('user'));
         
     }
@@ -78,9 +80,11 @@ class EntrepriseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $user = Auth::user();        
+        $user->load('entreprise');  
+        return view('modif_entreprise', compact('user'));
     }
 
     /**
@@ -90,9 +94,18 @@ class EntrepriseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Entreprise $entreprise, Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required',
+            'description' => 'required', 
+                       
+        ]);
+
+        
+        $entreprise->update($request->except('_token'));
+
+        return redirect()->route('entreprise.edit', compact('entreprise'))->with('message', 'Le compte a bien été modifié 🙂');
     }
 
     /**

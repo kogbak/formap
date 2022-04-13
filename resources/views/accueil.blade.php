@@ -2,6 +2,10 @@
 
 @section('content')
 
+@if (session()->has('message'))
+                        <p class="alert alert-success">{{ session()->get('message') }}</p>
+                    @endif
+
     <a href="{{ route('inscription') }}"><img src="{{ asset('images/banniere_formap.jpg') }}" alt="logo"
             class="banniere"></a>
 
@@ -11,17 +15,13 @@
         <div class="row ">
             <div class="col-12 ">
 
-
                 <div class="cadre_recherche_annonce mt-5 d-flex align-items-center justify-content-center">
 
                     <div class=" modif-input d-flex justify-content-center align-items-center">
                         <h4 style="color: #2e2e2e">Rechercher des annonces :</h4>
-                        <select id="domaine" name="domaines" class="ms-5">
-                            <option value="null" disabled="disabled" selected>Domaine d'activité</option>
-                            <option value="Charpentier">Charpentier</option>
-                            <option value="Boulanger">Boulanger</option>
-                            <option value="Kiné">Kiné</option>
-                        </select>
+                        <input type="text" id="Domaine" name="Domaine" required maxlength="50" placeholder="Domaine d'activités"
+                            size="30" class="ms-5 p-2">
+                        
                         <input type="text" id="lieux" name="lieux" required maxlength="50" placeholder="Lieux d'activités"
                             size="30" class="ms-5 p-2">
                     </div>

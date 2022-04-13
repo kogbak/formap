@@ -20,4 +20,10 @@ class HomeController extends Controller
         
         return view('accueil', compact('annonces'));
     }
+
+    public function inscription()
+    {
+        
+        return view('inscription');
+    }
 }

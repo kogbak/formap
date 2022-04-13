@@ -112,7 +112,7 @@
 
                         </div>
                         <div class="row">
-                            <label for="annees_experience">Années d'experience:</label><br>
+                            <label for="annees_experience">Années / Mois total d'experience:</label><br>
                             <input type="number" id="annees_experience" name="annees_experience" required maxlength="2"
                                 class="mb-5 w-50" placeholder="0">
                             @error('annees_experience')
@@ -142,7 +142,7 @@
                         <div class="rond-etape-valid"></div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mb-5">
                     <div class="col-12 text-end">
                         <input type="submit" value="Valider" class="bouton-suivant">
                     </div>
