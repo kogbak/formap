@@ -3,7 +3,8 @@
 function uploadImage($request)
 {
     $request->validate([
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'image' => 'required|file',
     ]);
 
     $imageName = time() . '.' . $request->image->extension();

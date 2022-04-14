@@ -120,6 +120,6 @@ class UserController extends Controller
         }
 
         $user->delete();
-        return redirect()->route('accueil')->with('message', 'Nous somme navrés de vous voir partir 🙁');
+        return redirect()->route('accueil')->with('message', 'Le compte a bien été supprimé mais nous somme navrés de vous voir partir 🙁');
     }
 }

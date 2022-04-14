@@ -366,16 +366,18 @@ border-left: 5px solid #6c6dda;
 background-color: #6c6dda;
 border: 0px solid;
 border-radius: 5px;
-padding: 3px;
+padding: 5px 30px 5px 30px;
 color: white;
 
 }
 
 .cards{
 
+    width: 23rem;
     border: 0px solid;
     border-radius: 15px;
     box-shadow: 0px 0px 20px rgb(223, 223, 223);
+    cursor: pointer;
 
 }
 
@@ -407,6 +409,23 @@ color: white;
     border-radius: 20px;
     background: rgb(213, 81, 81);
     margin: 0px;
+
+}
+
+.photo{
+
+border: 0px solid;
+border-radius: 50%;
+width: 5em;
+
+}
+
+.footer{
+
+background-color: #f1f1f1;
+height: 150px;
+width: 100%;
+color: #424242;
 
 }
 

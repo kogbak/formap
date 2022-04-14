@@ -11,6 +11,14 @@
         <div class="container d-flex justify-content-center w-50">
             <form method="POST" action="{{ route('formateur.store') }}">
                 @csrf
+
+                <div class="row mb-5">
+                    <div class="col-12 ajouter-photo">
+                        <label for="image" class="mb-3 mt-3">Ajouter une photo</label>
+                    <input type="file" name="image" class="form-control w-50">
+                    </div>
+                </div>
+                
                 <div class="row">
                     <div class="col-12 modif-input">
                         <div class="row w-50">

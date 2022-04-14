@@ -61,12 +61,12 @@
 
                             <label class="mt-3" for="experiences">Experience :</label>
                             <textarea id="experiences" name="experiences" rows="8" cols="33">{{ $user->formateur->experiences }}</textarea>
-                        </div>
+                        
 
                         <label class="mt-3" for="annees_experience">Année total d'experiences:</label>
-                            <input type="number" id="annees_experience" name="annees_experience" required maxlength="50"
+                            <input class="w-25" type="number" id="annees_experience" name="annees_experience" required maxlength="50"
                                 value=" {{ $user->formateur->annees_experience }}">
-
+                            </div>
                         <div class="row">
                             <div class="col d-flex justify-content-center">
                                 <input type="submit" value="Modifier" class="bouton-suivant mt-4 mb-5">

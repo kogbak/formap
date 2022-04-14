@@ -60,7 +60,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a href="{{ route('inscription') }}">{{ __('Accueil') }}</a>
+                                <a href="{{ route('accueil') }}">{{ __('Accueil') }}</a>
                             </li>
 
                             <li class="nav-item ms-3">
@@ -93,8 +93,9 @@
                                 </a>
 
 
-                                <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                     document.getElementById('logout-form').submit();">
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                                                 document.getElementById('logout-form').submit();">
                                     {{ __('Déconnexion') }}
                                 </a>
 
@@ -121,12 +122,22 @@
         @endif
         <main>
             @yield('content')
-            
+
         </main>
     </div>
 
-    
+
 
 </body>
+<footer>
+    <div class="row footer mt-5">
+
+        <div class="col-12 d-flex justify-content-center align-items-center">
+            <h5>© copyright - tous droits réserves - formap.fr</h5>
+        </div>
+
+    </div>
+
+</footer>
 
 </html>

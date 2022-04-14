@@ -16,38 +16,7 @@
                 <div class="explication_entreprise mb-5 d-flex justify-content-center align-items-center">&#x26A0; Veuillez à
                     bien renseigner exclusivement les informations de votre entreprise ou centre de formation.</div>
 
-                <div class="row mb-5">
-                    <div class="col-12 ajouter-photo">
-                        <img src="{{ asset('images/image_profil.png') }}" alt="logo" class="mx-auto">
-                        <a href="">+ Ajouter photo ou logo de l'entreprise</a>
-
-
-
-
-
-                        {{-- METTRE CODE ICI !!!!!!!!!!!!!!!!!! --}}
-                        {{-- METTRE CODE ICI !!!!!!!!!!!!!!!!!! --}}
-                        {{-- METTRE CODE ICI !!!!!!!!!!!!!!!!!! --}}
-                        {{-- METTRE CODE ICI !!!!!!!!!!!!!!!!!! --}}
-                        {{-- METTRE CODE ICI !!!!!!!!!!!!!!!!!! --}}
-                        {{-- METTRE CODE ICI !!!!!!!!!!!!!!!!!! --}}
-                        {{-- METTRE CODE ICI !!!!!!!!!!!!!!!!!! --}}
-                        {{-- METTRE CODE ICI !!!!!!!!!!!!!!!!!! --}}
-                        {{-- METTRE CODE ICI !!!!!!!!!!!!!!!!!! --}}
-                        {{-- METTRE CODE ICI !!!!!!!!!!!!!!!!!! --}}
-
-                        <div class="col-md-6 mx-auto">
-                            <label for="image" class="fs-4 mb-3 mt-3">Image : </label>
-                            <input type="file" name="image" class="form-control">
-                        </div>
-
-
-
-
-
-
-                    </div>
-                </div>
+                    
                 <div class="row mt-5">
                     <div class="col-6 modif-input">
 

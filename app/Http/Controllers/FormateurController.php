@@ -56,12 +56,12 @@ class FormateurController extends Controller
             'siret' => 'min:17|max:17',
 
         ]);
-
+        
         $formateur = Formateur::create([
-            'user_id' => session()->get('user_id'),
-            'image' => session()->get('image'),
+            'user_id' => session()->get('user_id'),         
             'age' => session()->get('age'),
             'sexe' => session()->get('sexe'),
+            'image' => uploadImage($request),
             'diplomes' => $request['diplomes'],
             'experiences' => $request['experiences'],
             'annees_experience' => $request['annees_experience'],

@@ -10,13 +10,9 @@
         <div class="container d-flex justify-content-center w-50">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
-                <div class="row">                 
-                    <div class="row mb-5">
-                        <div class="col-12 ajouter-photo">
-                            <img src="{{ asset('images/image_profil.png') }}" alt="logo" class="mx-auto">
-                            <a href="">+ Ajouter une photo</a>
-                        </div>
-                    </div>
+                <div class="row">      
+
+                            
                     <div class="col-6 modif-input">
                         <div class="row">
                             <label for="email">Adresse mail:</label><br>

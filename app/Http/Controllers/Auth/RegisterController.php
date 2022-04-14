@@ -78,6 +78,7 @@ class RegisterController extends Controller
             'ville' => ['required', 'string', 'max:50'],
             'code_postal' => ['required', 'string', 'max:5'],
             'age' => ['integer'],
+            
 
         ]);
     }
@@ -101,6 +102,9 @@ class RegisterController extends Controller
             session()->put('sexe', $data['sexe']);
         }
 
+        
+
+       
         
         $user = User::create([
             'prenom' => $data['prenom'],
