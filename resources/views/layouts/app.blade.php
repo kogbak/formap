@@ -67,6 +67,8 @@
                                 <a href="{{ route('liste_formateurs') }}">{{ __('Liste formateur') }}</a>
                             </li>
 
+                           
+
                             {{-- SI FORMATEUR JE VAIS DANS LE PROFIL FORMATEUR SINON JE VAIS DANS PROFIL ENTREPRISE --}}
 
                             @if (Auth::user()->formateur)
@@ -83,7 +85,9 @@
 
 
 
-
+                            <li class="nav-item ms-3">
+                                <a href="{{ route('messages') }}">{{ __('Messagerie') }}</a>
+                            </li>
 
 
                             <li class="nav-item ms-3">
@@ -95,7 +99,7 @@
 
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                                                                                 document.getElementById('logout-form').submit();">
+                                                                                     document.getElementById('logout-form').submit();">
                                     {{ __('Déconnexion') }}
                                 </a>
 
@@ -124,20 +128,20 @@
             @yield('content')
 
         </main>
+        <footer>
+
+            <div class="row text-center align-middle">
+                <h5 class="mt-5">© copyright - tous droits réserves - formap.fr</h5>
+            </div>
+
+
+
+        </footer>
     </div>
 
 
 
 </body>
-<footer>
-    <div class="row footer mt-5">
 
-        <div class="col-12 d-flex justify-content-center align-items-center">
-            <h5>© copyright - tous droits réserves - formap.fr</h5>
-        </div>
-
-    </div>
-
-</footer>
 
 </html>

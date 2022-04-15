@@ -1,8 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
+html{
+
+    height: 100%;
+}
+
 
 body {
     
     background-color: white!important;
+    overflow-x: hidden;
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 150px;
+
 }
 
 
@@ -420,15 +430,28 @@ width: 5em;
 
 }
 
-.footer{
+footer{
+
 
 background-color: #f1f1f1;
 height: 150px;
-width: 100%;
-color: #424242;
+color: #828282;
+position: absolute;
+left: 0; right: 0; bottom: 0;
+
 
 }
 
+
+.domaine_annonce{
+
+    background-color: #e8e9ff;
+    border: 0px solid;
+    border-radius: 5px;
+    padding: 3px 20px 3px 20px;
+    color: #6c6dda;
+
+}
 
 @charset "UTF-8";
 /*!

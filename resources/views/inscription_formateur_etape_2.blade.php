@@ -13,8 +13,8 @@
                 @csrf
 
                 <div class="row mb-5">
-                    <div class="col-12 ajouter-photo">
-                        <label for="image" class="mb-3 mt-3">Ajouter une photo</label>
+                    <div class="col-6 ajouter-photo ps-0">
+                        <label for="image" class="mt-3">Ajouter une photo</label>
                     <input type="file" name="image" class="form-control w-50">
                     </div>
                 </div>

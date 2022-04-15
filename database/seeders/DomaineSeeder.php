@@ -17,67 +17,41 @@ class DomaineSeeder extends Seeder
     public function run()
     {
         Domaine::create([
-
             'domaine' => 'Soudeur'
-
-
         ]);
 
         Domaine::create([
-
             'domaine' => 'Chaudronier'
-
-
         ]);
 
         Domaine::create([
-
             'domaine' => 'Plombier'
-
-
         ]);
 
         Domaine::create([
-
-            'domaine' => 'Electricien'
-
-
-        ]);
-
-        Domaine::create([
-
-            'domaine' => 'Charpentier'
-
-
-        ]);
-
-        Domaine::create([
-
-
-
-            'domaine' => 'Coiffeur'
-
-
-        ]);
-        Domaine::create([
-
-            'domaine' => 'Cuisinier'
-
-
-        ]);
-
-        Domaine::create([
-
-            'domaine' => 'Mecanicien automobile'
-
-
-        ]);
-
-        Domaine::create([
-
-
             'domaine' => 'Paysagiste'
-
         ]);
+
+        Domaine::create([
+            'domaine' => 'Electricien'
+        ]);
+
+        Domaine::create([
+            'domaine' => 'Charpentier'
+        ]);
+
+        Domaine::create([
+            'domaine' => 'Coiffeur'
+        ]);
+
+        Domaine::create([
+            'domaine' => 'Cuisinier'
+        ]);
+
+        Domaine::create([
+            'domaine' => 'Mecanicien automobile'
+        ]);
+
+        
     }
 }

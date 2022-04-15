@@ -49,7 +49,7 @@ class EntrepriseController extends Controller
 
         Entreprise::create([
             'user_id' => session()->get('user_id'),
-            'image' => uploadImage($request),
+            // 'image' => uploadImage($request),
             'siret' => $request['siret'],
             'nom' => $request['nom'],
             'description' => $request['description'],

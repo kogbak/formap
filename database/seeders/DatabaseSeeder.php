@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
             FormateurSeeder::class,
             MessageSeeder::class,
             RoleSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            DomaineFormateurSeeder::class
         ]);
     }
 }

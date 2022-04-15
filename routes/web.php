@@ -43,3 +43,10 @@ Route::put('update_dispo', [App\Http\Controllers\FormateurController::class, 'up
 //pages inscription pour les etapes 2 :
 Route::get('inscription_formateur_etape_2', [App\Http\Controllers\Auth\RegisterController::class, 'inscription_formateur_etape_2'])->name('inscription_formateur_etape_2');
 Route::get('inscription_entreprise_etape_2', [App\Http\Controllers\Auth\RegisterController::class, 'inscription_entreprise_etape_2'])->name('inscription_entreprise_etape_2');
+
+//pages message :
+Route::get('messages', [App\Http\Controllers\MessageController::class, 'index'])->name('messages');
+
+//search
+
+Route::get('/search', [App\Http\Controllers\AnnonceController::class, 'search'])->name('search');

@@ -17,7 +17,7 @@ class FormateurController extends Controller
      */
     public function listeFormateurs()
     {
-        $formateurs = Formateur::with('user')->get();
+        $formateurs = Formateur::with('user', 'domaines')->get();
         return view('liste_formateurs', compact('formateurs'));
     }
 

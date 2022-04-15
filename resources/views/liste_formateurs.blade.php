@@ -13,30 +13,38 @@
 
             <div class="row mb-5">
                 @foreach ($formateurs as $formateur)
-                
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
+                    <div class="modal fade" id="{{ 'exampleModal' . $loop->iteration }}" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">{{ $formateur->user->prenom }}
+                                        {{ $formateur->user->nom }}</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     ...
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
+
+                                @if (Auth::user())
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary mx-auto" data-bs-dismiss="modal">Me
+                                            contacter</button>
+                                    </div>
+                                @else
+                                    <p class="text-center mt-5 mb-3" style="color: #6c6dda;">Veuillez vous connecté pour
+                                        contacter
+                                        l'entreprise</p>
+                                @endif
                             </div>
                         </div>
                     </div>
                     <!-- Modal -->
 
-                    <div class="col-md-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <div class="col-md-4" data-bs-toggle="modal"
+                        data-bs-target="{{ '#exampleModal' . $loop->iteration }}">
                         <div class="cards m-4">
                             <div class="row">
                                 <div class="col-4">
@@ -69,7 +77,9 @@
                                 </div>
                                 <div class="row ">
                                     <div class="col-12 m-3  d-flex justify-content-center">
-                                        <div class="domaine">Soudeur</div>
+                                        @foreach ($formateur->domaines as $domaine)
+                                        <div class="domaine">{{ $domaine->domaine }}</div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

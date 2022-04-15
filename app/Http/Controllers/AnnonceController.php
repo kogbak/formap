@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Annonce;
+use App\Models\Domaine;
 
 class AnnonceController extends Controller
 {
@@ -14,8 +15,6 @@ class AnnonceController extends Controller
      */
     public function index()
     {
-
-        
     }
 
     /**
@@ -82,5 +81,26 @@ class AnnonceController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+
+    public function search(Request $request)
+    {
+        $request->validate([
+            'domaine' => 'required|max:20|min:4|string',
+            'ville' => 'nullable|max:50|min:1|string'
+        ]);
+
+        $recherche_domaine = strtolower($request['domaine']);
+        $recherche_ville = strtolower($request['ville']);
+
+        $domaine =  Domaine::where('domaine', 'like', "$recherche_domaine%")
+            ->with(['annonces' => function ($query, $recherche_ville) {
+                $query->where('ville', 'like', $recherche_ville)->latest()->paginate(10);
+            }])->get();
+
+        $domaine = $domaine[0];
+        return view('accueil', compact('domaine'));
     }
 }

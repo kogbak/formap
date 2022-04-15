@@ -18,7 +18,7 @@ class Formateur extends Model
     }
 
     public function domaines(){
-        return $this->belongsToMany(Domaine::class);
+        return $this->belongsToMany(Domaine::class, 'domaine_formateurs');
     }
 
     protected $fillable = [
