@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Annonce;
 use App\Models\Domaine;
+use Auth;
+use Illuminate\Auth\Events\Validated;
 
 class AnnonceController extends Controller
 {
@@ -24,7 +26,9 @@ class AnnonceController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();        
+        $user->load('entreprise');  
+        return view('creer_annonce', compact('user'));
     }
 
     /**
@@ -35,7 +39,29 @@ class AnnonceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'titre' => 'required',
+            'description_courte' => 'required', 
+            'description_longue' => 'required',
+            'ville' => 'required',
+            'code_postal' => 'required',
+            
+            
+        ]);
+
+        Annonce::create([
+          
+            'titre' => $request['titre'],
+            'description_courte' => $request['description_courte'],
+            'description_longue' => $request['description_longue'],
+            'ville' => $request['ville'],
+            'code_postal' => $request['code_postal'],
+            
+            
+        ]);
+
+        return redirect()->route('entreprise.show')->with('message', 'Votre annonce a était créer avec succès 🙂');
+
     }
 
     /**
@@ -46,7 +72,10 @@ class AnnonceController extends Controller
      */
     public function show($id)
     {
-        //
+        $entreprise->load('annonces');
+        return view('profil_entreprise', compact('entreprise'));
+
+        // comment faire ????????????????????????????????????????????????
     }
 
     /**

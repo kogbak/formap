@@ -34,6 +34,7 @@ Route::resource('/annonce', \App\Http\Controllers\AnnonceController::class);
 
 // user
 Route::put('modif_user', [App\Http\Controllers\UserController::class, 'update'])->name('modif_user');
+
 Route::delete('supprimer_user', [App\Http\Controllers\UserController::class, 'destroy'])->name('supprimer_user');
 
 //update disponibilité
@@ -50,3 +51,6 @@ Route::get('messages', [App\Http\Controllers\MessageController::class, 'index'])
 //search
 
 Route::get('/search', [App\Http\Controllers\AnnonceController::class, 'search'])->name('search');
+
+
+Route::get('admin/index', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');

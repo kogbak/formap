@@ -101,10 +101,6 @@ class RegisterController extends Controller
 
             session()->put('sexe', $data['sexe']);
         }
-
-        
-
-       
         
         $user = User::create([
             'prenom' => $data['prenom'],

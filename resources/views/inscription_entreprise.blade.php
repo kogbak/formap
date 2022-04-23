@@ -120,7 +120,7 @@
                         <div class="rond-etape"></div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mb-5">
                     <div class="col-12 text-end">
                         <input type="submit" value="Suivant" class="bouton-suivant">
                     </div>

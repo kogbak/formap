@@ -58,7 +58,7 @@
                             <div class="rond-etape-valid"></div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-5">
                         <div class="col-12 text-end">
                             <input type="submit" value="Valider" class="bouton-suivant">
                         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Annonce;
 use App\Models\Entreprise;
 use Illuminate\Http\Request;
 use App\Models\Formateur;
@@ -57,7 +58,7 @@ class EntrepriseController extends Controller
             
         ]);
 
-        return redirect()->route('login')->with('message', 'Votre compte entreprise a était créer avec succès');
+        return redirect()->route('login')->with('message', 'Votre compte entreprise a était créer avec succès 🙂');
     }
 
     /**
@@ -66,13 +67,14 @@ class EntrepriseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
     public function show($id)
     {
-        $user = Auth::user();     
-        // $user =  User::with('entreprise')->get();    
+        $user = Auth::user();        
         $user->load('entreprise');  
         return view('profil_entreprise', compact('user'));
-        
+      
     }
 
     /**

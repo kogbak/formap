@@ -67,22 +67,25 @@
                                 <a href="{{ route('liste_formateurs') }}">{{ __('Liste formateur') }}</a>
                             </li>
 
-                           
+
 
                             {{-- SI FORMATEUR JE VAIS DANS LE PROFIL FORMATEUR SINON JE VAIS DANS PROFIL ENTREPRISE --}}
 
-                            @if (Auth::user()->formateur)
+                            @if (Auth::user()->formateur && auth()->user()->role_id == 1)
                                 <li class="nav-item ms-3">
                                     <a
                                         href="{{ route('formateur.show', Auth::user()->formateur) }}">{{ __('Profil') }}</a>
                                 </li>
-                            @else
+                            @elseif (Auth::user()->entreprise && auth()->user()->role_id == 1)
                                 <li class="nav-item ms-3">
                                     <a
                                         href="{{ route('entreprise.show', Auth::user()->entreprise) }}">{{ __('Profil') }}</a>
                                 </li>
+                            @else
+                                <li class="nav-item ms-3">
+                                    <a href="{{ route('admin.index') }}">{{ __('Back-office') }}</a>
+                                </li>
                             @endif
-
 
 
                             <li class="nav-item ms-3">
@@ -99,7 +102,7 @@
 
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                         document.getElementById('logout-form').submit();">
                                     {{ __('Déconnexion') }}
                                 </a>
 

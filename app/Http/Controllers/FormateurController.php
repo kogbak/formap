@@ -61,7 +61,7 @@ class FormateurController extends Controller
             'user_id' => session()->get('user_id'),         
             'age' => session()->get('age'),
             'sexe' => session()->get('sexe'),
-            'image' => uploadImage($request),
+            // 'image' => uploadImage($request),
             'diplomes' => $request['diplomes'],
             'experiences' => $request['experiences'],
             'annees_experience' => $request['annees_experience'],
@@ -85,7 +85,7 @@ class FormateurController extends Controller
             }
         }
 
-        return redirect()->route('login')->with('message', 'Votre compte formateur a était créer avec succès');
+        return redirect()->route('login')->with('message', 'Votre compte formateur a était créer avec succès 🙂');
     }
 
 

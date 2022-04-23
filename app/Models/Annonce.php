@@ -16,4 +16,16 @@ class Annonce extends Model
     public function domaine(){
         return $this->belongsTo(Domaine::class);
     }
+
+
+    protected $fillable = [
+        'titre',
+        'description_courte',
+        'description_longue',
+        'ville',
+        'code_postal',
+        
+
+    ];
+
 }

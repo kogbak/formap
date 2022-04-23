@@ -60,9 +60,8 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
+                        
                         <div class="modal-body">
-
-
                             <div class="row mb-2">
                                 <div class="col">
                                     <p style="font-weight:bold; font-size:large;">{{ $annonce->titre }} </p>
@@ -75,15 +74,11 @@
                                     <p style="color: #909090">{{ $annonce->description_longue }}</p>
                                 </div>
                             </div>
-
-
-
-
-
                         </div>
+
                         @if (Auth::user())
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary mx-auto" data-bs-dismiss="modal">Me
+                                <button type="button" class="bouton_contacter mx-auto" data-bs-dismiss="modal">Me
                                     contacter</button>
                             </div>
                         @else
@@ -125,3 +120,4 @@
     </div>
     </div>
 @endsection
+

@@ -375,8 +375,9 @@ border-left: 5px solid #6c6dda;
 background-color: #6c6dda;
 border: 0px solid;
 border-radius: 5px;
-padding: 5px 30px 5px 30px;
+
 color: white;
+
 
 }
 
@@ -451,3 +452,109 @@ left: 0; right: 0; bottom: 0;
     color: #6c6dda;
 
 }
+
+.telephone_cacher{
+
+background-color: #288fd1;
+color: white;
+border: 0px solid;
+border-radius: 5px;
+padding: 5px;
+}
+
+.profil_disponible{
+
+    background: rgb(115, 203, 115);
+    color: white;
+    border: 0px solid;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 0px;
+
+}
+
+.profil_pas_disponible{
+
+    background: rgb(213, 81, 81);
+    color: white;
+    border: 0px solid;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+
+.profil_kms{
+
+    background-color: #d6d6d6;
+    color: rgb(39, 39, 39);
+    border: 0px solid;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+
+.bouton_contacter{
+
+    background-color: #6c6dda;
+    border: 0px solid #6c6dda;
+    border-radius: 4px;
+    padding: 7px 25px 7px 25px;
+    color: white;
+}
+
+#indisponible{
+
+    background-color: rgb(213, 81, 81);
+    border: 0px solid #6c6dda;
+    border-radius: 2px;
+    padding: 3px 10px 3px 10px;
+    color: white;
+
+}
+
+.text_dispo:not(#indisponible){
+
+    color: #616161;
+
+}
+
+.bouton_creer_domaine{
+
+    background-color: #ffffff;
+    border: 1px solid #6c6dda;
+    
+    border-radius: 4px;
+    padding: 7px 25px 7px 25px;
+    color: #6c6dda;
+
+}
+
+.bouton_list{
+
+    background-color: #6c6dda;
+    border: 0px solid #6c6dda;
+    border-radius: 4px;
+    padding: 7px 25px 7px 25px;
+    color: white;
+
+}
+
+.cadre_bouton_admin{
+
+background-color:#e8e9ff; 
+border:solid 0px; 
+border-radius:15px; 
+padding: 20px; 
+width: 55rem;
+
+}
+
+th, td {
+
+padding: 10px;
+border: 1px solid black;
+
+}
+
+
+

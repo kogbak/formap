@@ -73,7 +73,7 @@
                     <form method="POST" action="{{ route('supprimer_user') }}">
                         @csrf
                         @method('DELETE')
-                        <div class="col-12 d-flex flex-column mx-auto w-75 mt-5">
+                        <div class="col-12 d-flex flex-column mx-auto mt-5">
                             <div class="row ">
                                 <h4 class="text-center" style="color:#a9a9a9;">Supprimer mon compte:</h4>
                                 <div

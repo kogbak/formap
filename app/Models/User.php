@@ -59,6 +59,9 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo(Role::class);
     }
-
+    public function isAdmin()
+    {
+        return auth()->user()->role_id == "3";
+    }
     protected $with = ['formateur', 'entreprise'];
 }
