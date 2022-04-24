@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Domaine;
 
 class DomaineController extends Controller
 {
@@ -34,7 +35,19 @@ class DomaineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'domaine' => 'required',
+
+        ]);
+
+        Domaine::create([
+
+            'domaine' => $request['domaine'],
+
+
+        ]);
+
+        return redirect()->route('admin.index')->with('message', 'Le domaine a était créer avec succès 🙂');
     }
 
     /**

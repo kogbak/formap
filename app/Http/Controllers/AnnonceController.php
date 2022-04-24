@@ -7,6 +7,7 @@ use App\Models\Annonce;
 use App\Models\Domaine;
 use Auth;
 use Illuminate\Auth\Events\Validated;
+use App\Models\Entreprise;
 
 class AnnonceController extends Controller
 {
@@ -17,6 +18,7 @@ class AnnonceController extends Controller
      */
     public function index()
     {
+
     }
 
     /**
@@ -26,9 +28,8 @@ class AnnonceController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();        
-        $user->load('entreprise');  
-        return view('creer_annonce', compact('user'));
+        $domaines = Domaine::all();
+        return view('creer_annonce', compact('domaines'));
     }
 
     /**
@@ -40,6 +41,9 @@ class AnnonceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+
+            // 'domaine' => 'required',
+            'domaine' => $request->input('domaine'),
             'titre' => 'required',
             'description_courte' => 'required', 
             'description_longue' => 'required',
@@ -50,7 +54,7 @@ class AnnonceController extends Controller
         ]);
 
         Annonce::create([
-          
+            'domaine' => $request['domaine'],
             'titre' => $request['titre'],
             'description_courte' => $request['description_courte'],
             'description_longue' => $request['description_longue'],
@@ -70,7 +74,7 @@ class AnnonceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Entreprise $entreprise)
     {
         $entreprise->load('annonces');
         return view('profil_entreprise', compact('entreprise'));

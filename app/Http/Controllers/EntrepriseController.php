@@ -74,6 +74,10 @@ class EntrepriseController extends Controller
         $user = Auth::user();        
         $user->load('entreprise');  
         return view('profil_entreprise', compact('user'));
+
+        // $user = Auth::user();        
+        // $user->load('entreprise', 'annonces');  
+        // return view('profil_entreprise', compact('user', 'annonces'));
       
     }
 

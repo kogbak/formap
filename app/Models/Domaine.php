@@ -9,11 +9,19 @@ class Domaine extends Model
 {
     use HasFactory;
 
-    public function annonces(){
+    public function annonces()
+    {
         return $this->hasMany(Annonce::class);
     }
 
-    public function formateurs(){
-        return $this->belongsToMany(User::class, 'domaine_formateurs'); 
+    public function formateurs()
+    {
+        return $this->belongsToMany(User::class, 'domaine_formateurs');
     }
+
+
+    protected $fillable = [
+        'domaine',
+
+    ];
 }

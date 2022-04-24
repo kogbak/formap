@@ -49,8 +49,10 @@ Route::get('inscription_entreprise_etape_2', [App\Http\Controllers\Auth\Register
 Route::get('messages', [App\Http\Controllers\MessageController::class, 'index'])->name('messages');
 
 //search
-
 Route::get('/search', [App\Http\Controllers\AnnonceController::class, 'search'])->name('search');
 
-
+// admin
 Route::get('admin/index', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
+
+// Creation domaine
+Route::post('creer_domaine', [App\Http\Controllers\DomaineController::class, 'store'])->name('creer_domaine');

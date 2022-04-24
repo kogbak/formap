@@ -39,6 +39,10 @@
                 </div>
 
                 <div class="row">
+
+                    {{-- @foreach ($annonces as $annonce)
+                        
+                    @endforeach --}}
                     <h4 class="mt-3" style="color: #d8d8d8; ">Vous n'avez aucune annonce</h4>
                 </div>
 
