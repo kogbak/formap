@@ -18,11 +18,13 @@
 
                         <div class="modif-input d-flex flex-column w-50 mx-auto">
 
+                            <input type="hidden" name="entreprise_id" value="{{Auth::user()->entreprise->id}}">
+                            
                             <label class="mt-3" for="domaine">Domaine rechercher:</label>
                             <select name="domaine" id="domaine">
                                 <option value="">Choisissez le domaine rechercher</option>
                                 @foreach ($domaines as $domaine)
-                                    <option value="{{$domaine->domaine}}">{{ $domaine->domaine }}</option>
+                                    <option value="{{$domaine->id}}">{{ $domaine->domaine }}</option>
                                 @endforeach
                             </select>
 

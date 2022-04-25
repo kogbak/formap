@@ -9,13 +9,13 @@
             <h3>Remplir mon profil formateur. Etape 2/2</h3>
         </div>
         <div class="container d-flex justify-content-center w-50">
-            <form method="POST" action="{{ route('formateur.store') }}">
+            <form method="POST" action="{{ route('formateur.store') }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="row mb-5">
                     <div class="col-6 ajouter-photo ps-0">
                         <label for="image" class="mt-3">Ajouter une photo</label>
-                    <input type="file" name="image" class="form-control w-50">
+                    <input type="file" name="image" class="form-control">
                     </div>
                 </div>
                 
@@ -26,9 +26,11 @@
 
                             <select id="domaine" onchange="mot(this.value)">
                                 <option value="null" disabled="disabled" selected>Choisi un domaine</option>
-                                <option value="Charpentier">Charpentier</option>
-                                <option value="Boulanger">Boulanger</option>
-                                <option value="Kiné">Kiné</option>
+                                @foreach ($domaines as $domaine)
+                                    <option value="{{$domaine->domaine}}">{{ $domaine->domaine }}</option>
+                                @endforeach
+                                
+                               
                             </select>
                             <div id="mot" class="mb-5"></div>
 
@@ -120,7 +122,7 @@
 
                         </div>
                         <div class="row">
-                            <label for="annees_experience">Années / Mois total d'experience:</label><br>
+                            <label for="annees_experience">Années d'experience:</label><br>
                             <input type="number" id="annees_experience" name="annees_experience" required maxlength="2"
                                 class="mb-5 w-50" placeholder="0">
                             @error('annees_experience')

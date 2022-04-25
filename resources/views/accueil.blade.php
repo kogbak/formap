@@ -53,7 +53,7 @@
                 <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <img src="{{ asset('images/profil_entreprise/' . $annonce->entreprise->image) }}" alt="profil"
+                            <img src="{{ asset('images/' . $annonce->entreprise->image) }}" alt="profil"
                                 class="photo m-2">
                             <h5 class="modal-title" style="font-size:large;" id="exampleModalLabel">
                                 {{ $annonce->entreprise->nom }}</h5>
@@ -78,10 +78,9 @@
 
                         @if (Auth::user())
                             <div class="modal-footer">
-                                <button type="button" class="bouton_contacter mx-auto" data-bs-dismiss="modal">Me
-                                    contacter</button>
+                                <a style="text-decoration:none; color:white;" href="mailto:{{ $annonce->entreprise->user->email }}" class="bouton_contacter mx-auto" >{{ $annonce->entreprise->user->email }}</a>
                             </div>
-                        @else
+                        @else                           
                             <p class="text-center mt-5 mb-3" style="color: #6c6dda;">Veuillez vous connecté pour contacter
                                 l'entreprise</p>
                         @endif

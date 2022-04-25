@@ -24,6 +24,8 @@ class Annonce extends Model
         'description_longue',
         'ville',
         'code_postal',
+        'domaine_id',
+        'entreprise_id',
         
 
     ];

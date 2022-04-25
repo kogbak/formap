@@ -28,10 +28,6 @@ class AdminController extends Controller
         $formateurs = Formateur::with('user','domaines')->get();
        
         return view('admin/index', compact('entreprises', 'formateurs'));
-
-        
-        // $users = User::with('formateurs', 'entreprises')->get();
-        // return view('admin/index', compact('users'));
    
     }
 

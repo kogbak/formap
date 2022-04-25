@@ -36,4 +36,6 @@ class Entreprise extends Model
         
 
     ];
+
+    protected $with = ['annonces'];
 }

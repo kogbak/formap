@@ -7,6 +7,7 @@ use App\Models\Formateur;
 use App\Models\Domaine;
 use Auth;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Facades\DB;
 
 class FormateurController extends Controller
 {
@@ -56,12 +57,12 @@ class FormateurController extends Controller
             'siret' => 'min:17|max:17',
 
         ]);
-        
+
         $formateur = Formateur::create([
-            'user_id' => session()->get('user_id'),         
+            'user_id' => session()->get('user_id'),
             'age' => session()->get('age'),
             'sexe' => session()->get('sexe'),
-            // 'image' => uploadImage($request),
+            'image' => uploadImage($request),
             'diplomes' => $request['diplomes'],
             'experiences' => $request['experiences'],
             'annees_experience' => $request['annees_experience'],
@@ -73,17 +74,19 @@ class FormateurController extends Controller
         // sauvegarde de ses domaines dans table domaines_formateurs (attach)
 
         $domainesChoisis = array_filter(explode('-', $request["domaines"])); // récupération domaines choisis
-
         $domaines = Domaine::all(); // récupération de tous les domaines
 
         // faire le lien entre un domaine dans $domainesChoisis et son id dans $domaines
-
         foreach ($domaines as $domaine) {    // on boucle sur tous les domaines
 
-            if (in_array($domaine->nom, $domainesChoisis)) {   // pour chaque domaine, si son nom a été choisi
-                $formateur->domaines->attach($domaine->id);  // je l'insère dans la table intermédiaire
+            if (in_array($domaine->domaine, $domainesChoisis)) {   // pour chaque domaine, si son nom a été choisi
+
+                DB::table('domaine_formateurs')->insert([
+                    ['formateur_id' => $formateur->id, 'domaine_id' => $domaine->id],
+                ]);
             }
         }
+
 
         return redirect()->route('login')->with('message', 'Votre compte formateur a était créer avec succès 🙂');
     }
@@ -95,7 +98,6 @@ class FormateurController extends Controller
         $user = Auth::user();
         $user->load('formateur');
         return view('profil_formateur', compact('user'));
-
     }
 
     /**
@@ -124,11 +126,16 @@ class FormateurController extends Controller
             'diplomes' => 'required',
             'experiences' => 'required',
             'annees_experience' => 'required',
+           
 
         ]);
 
+        $formateur->diplomes = $request->input('diplomes');
+        $formateur->experiences = $request->input('experiences');
+        $formateur->annees_experience = $request->input('annees_experience');
+        $formateur->image = uploadImage($request);
 
-        $formateur->update($request->except('_token'));
+        $formateur->save();
 
         return redirect()->route('formateur.edit', compact('formateur'))->with('message', 'Le compte a bien été modifié 🙂');
     }
@@ -148,7 +155,7 @@ class FormateurController extends Controller
             'date_fin_dispo' => 'required',
             'kms' => 'required',
         ]);
-       
+
 
         $formateur->update([
             'disponible' => intval($request->input('disponible')),

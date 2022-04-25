@@ -42,8 +42,8 @@ class AnnonceController extends Controller
     {
         $request->validate([
 
-            // 'domaine' => 'required',
-            'domaine' => $request->input('domaine'),
+            
+            'domaine' => 'required',
             'titre' => 'required',
             'description_courte' => 'required', 
             'description_longue' => 'required',
@@ -54,7 +54,8 @@ class AnnonceController extends Controller
         ]);
 
         Annonce::create([
-            'domaine' => $request['domaine'],
+            'domaine_id' => $request['domaine'],
+            'entreprise_id' => $request['entreprise_id'],
             'titre' => $request['titre'],
             'description_courte' => $request['description_courte'],
             'description_longue' => $request['description_longue'],
@@ -64,7 +65,7 @@ class AnnonceController extends Controller
             
         ]);
 
-        return redirect()->route('entreprise.show')->with('message', 'Votre annonce a était créer avec succès 🙂');
+        return redirect()->route('entreprise.show', Auth::user()->entreprise)->with('message', 'Votre annonce a était créer avec succès 🙂');
 
     }
 
@@ -111,9 +112,10 @@ class AnnonceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Annonce $annonce)
     {
-        //
+        $annonce->delete();
+        return redirect()->route('entreprise.show', Auth::user()->entreprise)->with('message', 'Votre annonce a était supprimer avec succès 🙂');
     }
 
 

@@ -87,12 +87,6 @@
                                 </li>
                             @endif
 
-
-                            <li class="nav-item ms-3">
-                                <a href="{{ route('messages') }}">{{ __('Messagerie') }}</a>
-                            </li>
-
-
                             <li class="nav-item ms-3">
                                 <a id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false" v-pre>

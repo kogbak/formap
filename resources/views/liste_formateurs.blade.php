@@ -19,7 +19,7 @@
                         <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <img src="{{ asset('images/profil_formateur/' . $formateur->image) }}" alt="profil"
+                                    <img src="{{ asset('images/' . $formateur->image) }}" alt="profil"
                                         class="photo m-2">
                                     <h5 class="modal-title ms-3" id="exampleModalLabel">{{ $formateur->user->prenom }}
                                         {{ $formateur->user->nom }}</h5>
@@ -55,7 +55,7 @@
                                             <p style="color: #616161">{{ $formateur->diplomes }}</p>
                                             <h5>Expérience(s):</h5>
                                             <p style="color: #616161">{{ $formateur->experiences }}</p>
-                                            <h5>Année total d'experience:</h5>
+                                            <h5>Année d'experience:</h5>
                                             <p style="color: #616161">{{ $formateur->annees_experience }} ans</p>
                                             <h5 class="mt-3">Distance de trajet allers simple, prêt à effectuer:
                                             </h5>
@@ -86,8 +86,7 @@
 
                                 @if (Auth::user())
                                     <div class="modal-footer">
-                                        <button type="button" class="bouton_contacter mx-auto" data-bs-dismiss="modal">Me
-                                            contacter</button>
+                                        <a style="text-decoration:none; color:white;" href="mailto:{{ $formateur->user->email }}" class="bouton_contacter mx-auto" >{{ $formateur->user->email }}</a>
                                     </div>
                                 @else
                                     <p class="text-center mt-5 mb-3" style="color: #6c6dda;">Veuillez vous connecté pour
@@ -103,7 +102,7 @@
                         <div class="cards m-4">
                             <div class="row">
                                 <div class="col-4">
-                                    <img src="{{ asset('images/profil_formateur/' . $formateur->image) }}" alt="profil"
+                                    <img src="{{ asset('images/' . $formateur->image) }}" alt="profil"
                                         class="photo m-2">
                                 </div>
                                 <div class="col-8">

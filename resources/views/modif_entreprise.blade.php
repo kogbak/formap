@@ -21,6 +21,7 @@
 
                         <div class="modif-input d-flex flex-column w-50 mx-auto">
 
+  
                             <label class="mt-3" for="email">Adresse email:</label>
                             <input type="text" id="email" name="email" required maxlength="50"
                                 value=" {{ $user->email }}">
@@ -50,10 +51,19 @@
                     </form>
 
                     <h4 class="text-center" style="color:#6c6dda;">Modifier description entreprise</h4>
-                    <form method="POST" action="{{ route('entreprise.update', $user->entreprise) }}">
+                    <form method="POST" action="{{ route('entreprise.update', $user->entreprise) }} "enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="modif-input d-flex flex-column w-50 mx-auto">
+
+                            <img src="{{ asset('images/' . $user->entreprise->image) }}" alt="profil"
+                            class="photo m-2">
+                            <div class="row mb-5">
+                                <div class="col-6 ajouter-photo ps-0">
+                                    <label for="image" class="mt-3">Ajouter une photo</label>
+                                <input type="file" name="image" class="form-control">
+                                </div>
+                            </div>
 
                             <label class="mt-3" for="nom">Raison social:</label>
                             <input type="String" id="nom" name="nom" required maxlength="50"

@@ -9,15 +9,15 @@
             <h3>Remplir mon profil Entreprise. Etape 2/2</h3>
         </div>
         <div class="container d-flex justify-content-center">
-            <form method="POST" action="{{ route('entreprise.store') }}">
+            <form method="POST" action="{{ route('entreprise.store') }}" enctype="multipart/form-data">
                 @csrf
 
-                {{-- <div class="row mb-5">
+                <div class="row mb-5">
                     <div class="col-6 ajouter-photo ps-0">
                         <label for="image" class="mt-3">Ajouter une photo</label>
-                    <input type="file" name="image" class="form-control ">
+                    <input type="file" name="image" class="form-control">
                     </div>
-                </div> --}}
+                </div>
 
                 
                 <div class="row">

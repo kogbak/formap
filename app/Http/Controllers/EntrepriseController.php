@@ -50,7 +50,7 @@ class EntrepriseController extends Controller
 
         Entreprise::create([
             'user_id' => session()->get('user_id'),
-            // 'image' => uploadImage($request),
+            'image' => uploadImage($request),
             'siret' => $request['siret'],
             'nom' => $request['nom'],
             'description' => $request['description'],
@@ -106,11 +106,14 @@ class EntrepriseController extends Controller
         $request->validate([
             'nom' => 'required',
             'description' => 'required', 
-                       
+                         
         ]);
 
+        $entreprise->nom = $request->input('nom');
+        $entreprise->description = $request->input('description');
+        $entreprise->image = uploadImage($request);
         
-        $entreprise->update($request->except('_token'));
+        $entreprise->save();
 
         return redirect()->route('entreprise.edit', compact('entreprise'))->with('message', 'Le compte a bien été modifié 🙂');
     }

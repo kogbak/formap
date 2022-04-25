@@ -21,6 +21,8 @@
 
                         <div class="modif-input d-flex flex-column w-50 mx-auto">
 
+                           
+
                             <label class="mt-3" for="email">Adresse email:</label>
                             <input type="text" id="email" name="email" required maxlength="50"
                                 value=" {{ $user->email }}">
@@ -50,10 +52,20 @@
                     </form>
 
                     <h4 class="text-center" style="color:#6c6dda;">Modifier description formateur</h4>
-                    <form method="POST" action="{{ route('formateur.update', $user->formateur) }}">
+                    <form method="POST" action="{{ route('formateur.update', $user->formateur) }} "enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="modif-input d-flex flex-column w-50 mx-auto">
+
+                            <img src="{{ asset('images/' . $user->formateur->image) }}" alt="profil"
+                            class="photo m-2">
+
+                            <div class="row mb-5">
+                                <div class="col-6 ajouter-photo ps-0">
+                                    <label for="image" class="mt-3">Ajouter une photo</label>
+                                <input type="file" name="image" class="form-control">
+                                </div>
+                            </div>
 
                             <label class="mt-3" for="diplomes">Diplome:</label>
                             <input type="String" id="diplomes" name="diplomes" required maxlength="50"
@@ -63,9 +75,9 @@
                             <textarea id="experiences" name="experiences" rows="8" cols="33">{{ $user->formateur->experiences }}</textarea>
                         
 
-                        <label class="mt-3" for="annees_experience">Année total d'experiences:</label>
+                        <label class="mt-3" for="annees_experience">Année d'experiences:</label>
                             <input class="w-25" type="number" id="annees_experience" name="annees_experience" required maxlength="50"
-                                value=" {{ $user->formateur->annees_experience }}">
+                                value="{{ intval($user->formateur->annees_experience) }}">
                             </div>
                         <div class="row">
                             <div class="col d-flex justify-content-center">
