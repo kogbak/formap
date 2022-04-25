@@ -55,17 +55,24 @@
                     <form method="POST" action="{{ route('formateur.update', $user->formateur) }} "enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <div class="modif-input d-flex flex-column w-50 mx-auto">
 
-                            <img src="{{ asset('images/' . $user->formateur->image) }}" alt="profil"
-                            class="photo m-2">
 
-                            <div class="row mb-5">
-                                <div class="col-6 ajouter-photo ps-0">
-                                    <label for="image" class="mt-3">Ajouter une photo</label>
-                                <input type="file" name="image" class="form-control">
+                        <div class="row mt-5">
+                            <div class="col d-flex justify-content-center">
+                                <img src="{{ asset('images/' . $user->formateur->image) }}" alt="profil"
+                                    class="photo">
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col d-flex justify-content-center">
+                                <div class="col-6 ajouter-photo">
+                                    <label for="image" class="mt-3">Modifier la photo</label>
+                                    <input type="file" name="image" class="form-control">
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="modif-input d-flex flex-column w-50 mx-auto">
 
                             <label class="mt-3" for="diplomes">Diplome:</label>
                             <input type="String" id="diplomes" name="diplomes" required maxlength="50"
