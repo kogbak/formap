@@ -124,7 +124,7 @@
                         <div class="row">
                             <label for="annees_experience">Années d'experience:</label><br>
                             <input type="number" id="annees_experience" name="annees_experience" required maxlength="2"
-                                class="mb-5 w-50" placeholder="0">
+                            min="1" max="100"  class="mb-5 w-50" placeholder="0">
                             @error('annees_experience')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -135,7 +135,7 @@
                         <div class="row">
                             <label for="kms">Combien de Kms (allers simple) êtes vous prêt à faire:</label><br>
                             <input class=" w-50 mb-5" type="number" id="kms" name="kms" required maxlength="3"
-                                placeholder="120">
+                                placeholder="120" min="10">
                             @error('kms')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

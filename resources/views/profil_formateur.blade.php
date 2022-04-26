@@ -52,11 +52,11 @@
                     <div class="col-12 text-center modif-input">
                         <label for="date_debut_dispo">Disponible à partir du:</label>
                         <input class="ms-2 ps-4 pe-4" type="date" id="date_debut_dispo" name="date_debut_dispo" required
-                            maxlength="50" class="mb-5">
+                            maxlength="50" class="mb-5" value="{{ $user->formateur->date_debut_dispo }}">
 
                         <label class="ms-4" for="date_fin_dispo">Jusqu'a:</label>
                         <input class="ms-2 ps-4 pe-4" type="date" id="date_fin_dispo" name="date_fin_dispo" required
-                            maxlength="50" class="mb-5">
+                            maxlength="50" class="mb-5" value="{{ $user->formateur->date_fin_dispo }}">
                     </div>
                 </div>
 
@@ -65,7 +65,7 @@
                     <div class="col-12 text-center modif-input">
                         <label for="kms">Combien de Kms (allers simple) êtes vous prêt à faire:</label><br>
                         <input class=" w-25" type="number" id="kms" name="kms" required maxlength="3"
-                            placeholder="120">
+                            value="{{ $user->formateur->kms }}" min="10">
                     </div>
                 </div>
 

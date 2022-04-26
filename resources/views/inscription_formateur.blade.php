@@ -43,7 +43,7 @@
                         </div>
                         <div class="row">
                             <label for="age">Age:</label><br>
-                            <input type="number" id="age" name="age" required maxlength="2" class="mb-5">
+                            <input type="number" id="age" name="age" required maxlength="2" min="18" max="150" class="mb-5">
                             @error('age')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

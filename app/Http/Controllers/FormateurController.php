@@ -29,15 +29,6 @@ class FormateurController extends Controller
         return view('inscription_formateur');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -133,7 +124,7 @@ class FormateurController extends Controller
         $formateur->diplomes = $request->input('diplomes');
         $formateur->experiences = $request->input('experiences');
         $formateur->annees_experience = $request->input('annees_experience');
-        $formateur->image = uploadImage($request);
+        if($request['image']){$formateur->image = uploadImage($request);}
 
         $formateur->save();
 
@@ -168,16 +159,4 @@ class FormateurController extends Controller
     }
 
 
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
